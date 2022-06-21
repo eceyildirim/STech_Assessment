@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using Report.Core.Responses;
+using Report.Entity.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;

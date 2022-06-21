@@ -59,5 +59,32 @@ namespace PhoneDirectory.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid ID.
+        /// </summary>
+        public static string InvalidID {
+            get {
+                return ResourceManager.GetString("InvalidID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Fill In The Required Fields.
+        /// </summary>
+        public static string PleaseFillInTheRequiredFields {
+            get {
+                return ResourceManager.GetString("PleaseFillInTheRequiredFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This Field Is Required.
+        /// </summary>
+        public static string ThisFieldIsRequired {
+            get {
+                return ResourceManager.GetString("ThisFieldIsRequired", resourceCulture);
+            }
+        }
     }
 }

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneDirectory.Entity\PhoneDirectory.Entity.csproj" />
+    <ProjectReference Include="..\Report.Core\Report.Core.csproj" />
   </ItemGroup>
 
 </Project>

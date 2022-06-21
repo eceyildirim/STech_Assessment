@@ -59,5 +59,14 @@ namespace PhoneDirectory.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to An unexpected error has occurred, please try again later..
+        /// </summary>
+        public static string Feedback_UnexpectedError {
+            get {
+                return ResourceManager.GetString("Feedback_UnexpectedError", resourceCulture);
+            }
+        }
     }
 }

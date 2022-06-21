@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneDirectory.DAL\PhoneDirectory.DAL.csproj" />
+    <ProjectReference Include="..\PhoneDirectory.Resources\PhoneDirectory.Resources.csproj" />
   </ItemGroup>
 
 </Project>

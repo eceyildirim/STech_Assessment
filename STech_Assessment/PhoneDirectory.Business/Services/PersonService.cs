@@ -4,6 +4,7 @@ using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
 using PhoneDirectory.Entity.Models;
+using PhoneDirectory.Resources;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,19 @@ namespace PhoneDirectory.Business.Services
         public ServiceResponse<PersonModel> CreatePerson(PersonModel person)
         {
             var res = new ServiceResponse<PersonModel>();
+            var personEntity = Mapper.Map<Person>(person);
+
+            var createPersonRes = _personRepository.InsertOne(personEntity);
+
+            if(!createPersonRes.Successed || createPersonRes.Result == null)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
+                res.Errors = createPersonRes.Message;
+            }
+
+            res.Result = Mapper.Map<PersonModel>(createPersonRes.Result);
 
             return res;
         }
@@ -32,12 +46,65 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel>();
 
+            #region [Validation]
+            if (string.IsNullOrEmpty(id))
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.PleaseFillInTheRequiredFields;
+                res.Successed = false;
+
+                return res;
+             }
+            #endregion
+
+            #region [Get Person]
+            var personRes = _personRepository.FindById(id);
+            
+            if(!personRes.Successed)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
+
+                return res;
+            }
+            
+            if(personRes.Result == null)
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.InvalidID;
+                res.Successed = false;
+
+                return res;
+            }
+            #endregion
+
+            #region [Delete Person]
+            var person = personRes.Result;
+            person.DeletedAt = DateTime.UtcNow;
+
+            var deletePersonRes = _personRepository.ReplaceOne(person);
+
+            if(!deletePersonRes.Successed)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
+
+                return res;
+            }
+            #endregion
+
+            res.Result = Mapper.Map<PersonModel>(person);
+
             return res;
         }
 
         public List<PersonModel> GetAllPersons()
         {
-            throw new NotImplementedException();
+            var persons = _personRepository.FilterBy(x => x.DeletedAt == null).Result;
+
+            return Mapper.Map<List<PersonModel>>(persons);
         }
     }
 }

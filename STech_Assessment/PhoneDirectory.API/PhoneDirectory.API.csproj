@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
+    <ProjectReference Include="..\PhoneDirectory.DAL\PhoneDirectory.DAL.csproj" />
   </ItemGroup>
 
 </Project>
