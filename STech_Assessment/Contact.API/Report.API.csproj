@@ -19,7 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
+    <ProjectReference Include="..\Contact.Business\Report.Business.csproj" />
   </ItemGroup>
 
 </Project>

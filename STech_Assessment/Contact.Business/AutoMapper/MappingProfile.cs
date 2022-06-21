@@ -1,7 +1,9 @@
 ﻿using AutoMapper;
+using Report.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Report.Entity.Models;
 
 namespace Report.Business.AutoMapper
 {
@@ -14,7 +16,7 @@ namespace Report.Business.AutoMapper
 
         public void CreateReportMappings()
         {
-            CreateMap<ReportModel, Report>().ReverseMap();
+            CreateMap<ReportModel, Report.Entity.Models.Report>().ReverseMap();
         }
     }
 }
