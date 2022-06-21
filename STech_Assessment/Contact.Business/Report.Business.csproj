@@ -16,4 +16,8 @@
     <PackageReference Include="System.Drawing.Common" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
+  </ItemGroup>
+
 </Project>

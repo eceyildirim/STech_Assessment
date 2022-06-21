@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Contact.API.Entity
+namespace Report.API.Entity
 {
     public class Class1
     {

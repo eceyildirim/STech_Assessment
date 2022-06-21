@@ -2,6 +2,7 @@
 using PhoneDirectory.Business.Base;
 using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
+using PhoneDirectory.Business.Responses;
 using PhoneDirectory.Entity.Models;
 using System;
 using System.Collections.Generic;
@@ -20,14 +21,18 @@ namespace PhoneDirectory.Business.Services
         {
             _personRepository = personRepository;
         }
-        public Responses.ServiceResponse<PersonModel> CreatePerson(PersonModel person)
+        public ServiceResponse<PersonModel> CreatePerson(PersonModel person)
         {
-            throw new NotImplementedException();
+            var res = new ServiceResponse<PersonModel>();
+
+            return res;
         }
 
-        public Responses.ServiceResponse<PersonModel> DeletePerson(string id)
+        public ServiceResponse<PersonModel> DeletePerson(string id)
         {
-            throw new NotImplementedException();
+            var res = new ServiceResponse<PersonModel>();
+
+            return res;
         }
 
         public List<PersonModel> GetAllPersons()

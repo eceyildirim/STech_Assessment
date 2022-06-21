@@ -18,4 +18,8 @@
     <PackageReference Include="System.ServiceModel.Security" Version="4.7.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
+  </ItemGroup>
+
 </Project>

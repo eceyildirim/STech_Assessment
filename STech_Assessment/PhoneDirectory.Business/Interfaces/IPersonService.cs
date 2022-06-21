@@ -11,7 +11,5 @@ namespace PhoneDirectory.Business.Interfaces
         ServiceResponse<PersonModel> CreatePerson(PersonModel person);
         ServiceResponse<PersonModel> DeletePerson(string id);
         List<PersonModel> GetAllPersons();
-
-
     }
 }
