@@ -20,7 +20,7 @@ namespace Report.Entity.Base
 
         public DateTime? DeletedAt { get; set; }
 
-        public EntityStatus Status { get; set; }
+        public ReportStatus Status { get; set; }
 
     }
 }
