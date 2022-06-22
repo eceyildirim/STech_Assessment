@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Report.Core
 {
-    public enum EntityStatus
+    public enum ReportStatus
     {
         Prepare = 10,
         Complete = -10
