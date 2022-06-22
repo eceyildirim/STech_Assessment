@@ -19,7 +19,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using static PhoneDirectory.DAL.Interfaces.IMongoRepository;
 
 namespace PhoneDirectory.API
 {
@@ -46,6 +45,7 @@ namespace PhoneDirectory.API
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IPersonService), typeof(PersonService));
+            services.AddScoped(typeof(IContactInformationService), typeof(ContactInformationService));
 
             services.AddHttpContextAccessor();
             services.AddAutoMapper(typeof(MappingProfile));

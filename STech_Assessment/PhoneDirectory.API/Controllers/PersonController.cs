@@ -22,7 +22,7 @@ namespace PhoneDirectory.API.Controllers
         }
 
         [HttpPost, Route("create")]
-        public IActionResult CreateUser(PersonModel person)
+        public IActionResult CreatePerson(PersonModel person)
         {
             var validationResult = personValidator.Validate(person);
 
@@ -48,9 +48,57 @@ namespace PhoneDirectory.API.Controllers
         }
 
         [HttpGet, Route("")]
-        public IActionResult GetAllUsers()
+        public IActionResult GetAllPersons()
         {
             return Ok(_personService.GetAllPersons());
+        }
+
+        //[HttpPut, Route("addcontact")]
+        //public IActionResult AddContact(PersonModel person)
+        //{
+        //    var res = _personService.AddContact(person);
+
+        //    if (!res.Successed)
+        //    {
+        //        return APIResponse(res);
+        //    }
+
+        //    return Ok(res.Result);
+        //}
+
+        //[HttpDelete, Route("contact/{id}")]
+        //public IActionResult DeleteContact(string id)
+        //{
+        //    var res = _personService.DeleteContact(id);
+        //    if (!res.Successed)
+        //    {
+        //        return APIResponse(res);
+        //    }
+
+        //    return Ok(res.Result);
+        //}
+
+        [HttpGet, Route("{id}")]
+        public IActionResult GetPersonById(string id)
+        {
+            var res = _personService.GetPersonById(id);
+            if(!res.Successed)
+            {
+                return APIResponse(res);
+            }
+
+            return Ok(res.Result);
+        }
+
+        [HttpGet, Route("persons")]
+        public IActionResult GetAllPersonsGroupByLocation()
+        {
+            var res = _personService.GetAllPersonsGroupByLocation();
+            if(!res.Successed)
+            {
+                return APIResponse(res);
+            }
+            return Ok(res.Result);
         }
     }
 }

@@ -8,10 +8,13 @@ namespace Report.Core.Responses
     {
         public bool Successed { get; set; } = true;
         public string Message { get; set; }
+
     }
+
     public class RepositoryResponse<T> : RepositoryResponse
     {
         public T Result { get; set; }
+
         public int TotalDocuments { get; set; } = 0;
     }
 }

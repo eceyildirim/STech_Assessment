@@ -1,15 +1,14 @@
 ﻿using MongoDB.Driver;
-using PhoneDirectory.Core.Responses;
-using PhoneDirectory.DAL.Interfaces;
-using PhoneDirectory.Entity.Base;
+using Report.Core.Responses;
+using Report.DAL.Interfaces;
+using Report.Entity.Base;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PhoneDirectory.DAL.Repositories
+namespace Report.DAL.Repositories
 {
     public class MongoRepository<TDocument> : IMongoRepository<TDocument> where TDocument : IDocument
     {
@@ -54,23 +53,6 @@ namespace PhoneDirectory.DAL.Repositories
                     .Skip((page - 1) * pageSize)
                     .Limit(pageSize)
                     .ToList();
-            }
-            catch (Exception ex)
-            {
-                response.Successed = false;
-                response.Message = ex.Message;
-            }
-
-            return response;
-        }
-
-        public RepositoryResponse<TDocument> FindOne(Expression<Func<TDocument, bool>> filterExpression)
-        {
-            var response = new RepositoryResponse<TDocument> { };
-
-            try
-            {
-                response.Result = _collection.Find(filterExpression).FirstOrDefault();
             }
             catch (Exception ex)
             {

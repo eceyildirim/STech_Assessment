@@ -8,6 +8,5 @@ namespace Report.Business.Models
     public class ReportModel : BaseModel
     {
         public DateTime ReportRequestDate { get; set; }
-        public 
     }
 }

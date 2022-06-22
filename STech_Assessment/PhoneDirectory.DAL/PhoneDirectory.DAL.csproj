@@ -9,8 +9,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PhoneDirectory.Core\PhoneDirectory.Core.csproj" />
     <ProjectReference Include="..\PhoneDirectory.Entity\PhoneDirectory.Entity.csproj" />
-    <ProjectReference Include="..\Report.Core\Report.Core.csproj" />
   </ItemGroup>
 
 </Project>

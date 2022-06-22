@@ -15,7 +15,6 @@ namespace Report.Business.Base
         public DateTime? UpdatedAt { get; set; }
 
         public DateTime? DeletedAt { get; set; }
-        public EntityStatus Status { get; set; } = EntityStatus.Draft;
 
     }
 }

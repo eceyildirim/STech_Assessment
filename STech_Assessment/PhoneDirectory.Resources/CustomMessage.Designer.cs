@@ -61,6 +61,15 @@ namespace PhoneDirectory.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contact Information Not Found.
+        /// </summary>
+        public static string ContactInformationNotFound {
+            get {
+                return ResourceManager.GetString("ContactInformationNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Invalid ID.
         /// </summary>
         public static string InvalidID {
@@ -84,6 +93,15 @@ namespace PhoneDirectory.Resources {
         public static string ThisFieldIsRequired {
             get {
                 return ResourceManager.GetString("ThisFieldIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Not Found.
+        /// </summary>
+        public static string UserNotFound {
+            get {
+                return ResourceManager.GetString("UserNotFound", resourceCulture);
             }
         }
     }

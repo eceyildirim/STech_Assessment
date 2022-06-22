@@ -9,7 +9,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <ProjectReference Include="..\PhoneDirectory.Core\PhoneDirectory.Core.csproj" />
   </ItemGroup>
 
 </Project>

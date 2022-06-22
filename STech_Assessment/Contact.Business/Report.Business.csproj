@@ -17,7 +17,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contact.Entity\Report.Entity.csproj" />
+    <ProjectReference Include="..\Contact.DAL\Report.DAL.csproj" />
+    <ProjectReference Include="..\Contact.Resources\Report.Resources.csproj" />
   </ItemGroup>
 
 </Project>

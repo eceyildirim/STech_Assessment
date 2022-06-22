@@ -12,11 +12,17 @@ namespace PhoneDirectory.Business.AutoMapper
         public MappingProfile()
         {
             CreatePersonMappings();
+            CreateContactInformationMappings();
         }
 
         public void CreatePersonMappings()
         {
             CreateMap<PersonModel, Person>().ReverseMap();
+        }
+
+        public void CreateContactInformationMappings()
+        {
+            CreateMap<ContactInformationModel, ContactInformation>().ReverseMap();
         }
     }
 }

@@ -1,14 +1,17 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Driver;
 using PhoneDirectory.Business.Base;
 using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
+using PhoneDirectory.Core;
+using PhoneDirectory.DAL.Interfaces;
 using PhoneDirectory.Entity.Models;
 using PhoneDirectory.Resources;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
-using static PhoneDirectory.DAL.Interfaces.IMongoRepository;
 
 namespace PhoneDirectory.Business.Services
 {
@@ -100,11 +103,168 @@ namespace PhoneDirectory.Business.Services
             return res;
         }
 
-        public List<PersonModel> GetAllPersons()
-        {
-            var persons = _personRepository.FilterBy(x => x.DeletedAt == null).Result;
+        //public ServiceResponse<PersonModel> AddContact(PersonModel model)
+        //{
+        //    var response = new ServiceResponse<PersonModel> { };
 
-            return Mapper.Map<List<PersonModel>>(persons);
+        //    var findPerson = _personRepository.FindById(model.UUID);
+        //    if (!findPerson.Successed || findPerson.Result == null)
+        //    {
+        //        response.Code = StatusCodes.Status404NotFound;
+        //        response.Message = CustomMessage.UserNotFound;
+        //        response.Successed = false;
+        //        response.Errors = findPerson.Message;
+        //        return response;
+        //    }
+
+        //    var person = findPerson.Result;
+
+        //    person.InformationType = model.InformationType;
+        //    person.InformationContent = model.InformationContent;
+        //    person.UpdatedAt = DateTime.UtcNow;
+
+        //    var updatePerson = _personRepository.ReplaceOne(person);
+        //    if (!updatePerson.Successed)
+        //    {
+        //        response.Code = StatusCodes.Status500InternalServerError;
+        //        response.Message = SystemMessage.Feedback_UnexpectedError;
+        //        response.Successed = false;
+        //        response.Errors = updatePerson.Message;
+        //        return response;
+        //    }
+
+        //    response.Result = Mapper.Map<PersonModel>(updatePerson.Result);
+        //    return response;
+        //}
+
+        //public ServiceResponse<PersonModel> DeleteContact(string id)
+        //{
+        //    var res = new ServiceResponse<PersonModel> { };
+
+        //    #region [Validation]
+        //    if (string.IsNullOrEmpty(id))
+        //    {
+        //        res.Code = StatusCodes.Status400BadRequest;
+        //        res.Message = CustomMessage.PleaseFillInTheRequiredFields;
+        //        res.Successed = false;
+
+        //        return res;
+        //    }
+
+        //    #endregion
+
+        //    #region [Get Person]
+        //    var personRes = _personRepository.FindById(id);
+        //    if (!personRes.Successed)
+        //    {
+        //        res.Code = StatusCodes.Status500InternalServerError;
+        //        res.Message = SystemMessage.Feedback_UnexpectedError;
+        //        res.Successed = false;
+
+        //        return res;
+        //    }
+
+        //    if (personRes.Result == null)
+        //    {
+        //        res.Code = StatusCodes.Status400BadRequest;
+        //        res.Message = CustomMessage.UserNotFound;
+        //        res.Successed = false;
+
+        //        return res;
+        //    }
+        //    #endregion
+
+        //    #region [Delete Contact]
+        //    var person = personRes.Result;
+
+        //    person.InformationType = ContactInformationType.NotSelect;
+        //    person.InformationContent = null;
+
+        //    var deleteRes = _personRepository.ReplaceOne(person);
+        //    if(!deleteRes.Successed)
+        //    {
+        //        res.Code = StatusCodes.Status500InternalServerError;
+        //        res.Message = SystemMessage.Feedback_UnexpectedError;
+        //        res.Errors = deleteRes.Message;
+        //        res.Successed = false;
+
+        //        return res;
+        //    }
+        //    #endregion
+
+        //    res.Result = Mapper.Map<PersonModel>(deleteRes.Result);
+
+        //    return res;
+        //}
+
+        public ServiceResponse<PersonModel> GetPersonById(string id)
+        {
+            var res = new ServiceResponse<PersonModel> { };
+
+            var lookedUp = _personRepository.Aggregate()
+                .Match(x => x.UUID == id)
+                .ToList();
+
+            var person = lookedUp.FirstOrDefault();
+
+            if (person == null)
+            {
+                res.Code = StatusCodes.Status404NotFound;
+                res.Message = CustomMessage.UserNotFound;
+                res.Successed = false;
+
+                return res;
+            }
+
+            res.Result = Mapper.Map<PersonModel>(person);
+
+            return res;
+        }
+
+        public ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation()
+        {
+            //var persons = _personRepository.FilterBy(x => x.PersonLocation == person.Location).Result;
+            //return Mapper.Map<List<PersonModel>>(persons);
+            var res = new ServiceResponse<List<PersonModel>> { };
+
+            //var persons = _personRepository.Aggregate()
+            //        .Match(x => x.DeletedAt == null)
+            //        .Group(x => x.PersonLocation, g => new { Key = g.Key, Count = g.Count() })
+            //        .ToList();
+
+            //if(persons == null)
+            //{
+            //    res.Code = StatusCodes.Status404NotFound;
+            //    res.Message = CustomMessage.UserNotFound;
+            //    res.Successed = false;
+
+            //    return res;
+            //}
+
+            //res.Result = Mapper.Map<List<PersonModel>>(persons);
+
+            return res;
+        }
+
+        public ServiceResponse<List<PersonModel>> GetAllPersons()
+        {
+            var res = new ServiceResponse<List<PersonModel>>();
+
+            #region [Get Data]
+
+            var match = Builders<Person>.Filter.Where(x => x.DeletedAt == null);
+
+            var persons = _personRepository.Aggregate()
+                                           .Match(match)
+                                           .ToList();
+
+            #endregion
+
+            //var persons = _personRepository.FilterBy(x => x.DeletedAt == null).Result;
+
+            res.Result = Mapper.Map<List<PersonModel>>(persons);
+
+            return res;
         }
     }
 }
