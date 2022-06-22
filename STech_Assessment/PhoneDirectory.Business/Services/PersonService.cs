@@ -201,13 +201,21 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel> { };
 
+
+            //var projection = Builders<PersonLookedUp>.Projection
+            //                .Exclude("User.Password");
+
             var lookedUp = _personRepository.Aggregate()
+                .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
                 .Match(x => x.UUID == id)
+                .SortByDescending(x => x.Name)
                 .ToList();
 
             var person = lookedUp.FirstOrDefault();
 
-            if (person == null)
+            res.Result = Mapper.Map<PersonModel>(person);
+
+            if (res == null)
             {
                 res.Code = StatusCodes.Status404NotFound;
                 res.Message = CustomMessage.UserNotFound;
@@ -215,8 +223,6 @@ namespace PhoneDirectory.Business.Services
 
                 return res;
             }
-
-            res.Result = Mapper.Map<PersonModel>(person);
 
             return res;
         }

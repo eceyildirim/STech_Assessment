@@ -18,11 +18,15 @@ namespace PhoneDirectory.Business.AutoMapper
         public void CreatePersonMappings()
         {
             CreateMap<PersonModel, Person>().ReverseMap();
+            CreateMap<PersonModel, PersonLookedUp>();
+            CreateMap<Person, PersonLookedUp>().ReverseMap();
         }
 
         public void CreateContactInformationMappings()
         {
             CreateMap<ContactInformationModel, ContactInformation>().ReverseMap();
+            CreateMap<ContactInformationModel, ContanctInformationLookedUp>();
+            CreateMap<ContactInformation, ContanctInformationLookedUp>().ReverseMap();
         }
     }
 }
