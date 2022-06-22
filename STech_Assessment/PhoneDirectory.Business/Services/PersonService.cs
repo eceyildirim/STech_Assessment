@@ -201,10 +201,6 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel> { };
 
-
-            //var projection = Builders<PersonLookedUp>.Projection
-            //                .Exclude("User.Password");
-
             var lookedUp = _personRepository.Aggregate()
                 .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
                 .Match(x => x.UUID == id)

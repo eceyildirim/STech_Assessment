@@ -18,7 +18,7 @@ namespace PhoneDirectory.Business.AutoMapper
         public void CreatePersonMappings()
         {
             CreateMap<PersonModel, Person>().ReverseMap();
-            CreateMap<PersonModel, PersonLookedUp>();
+            CreateMap<PersonModel, PersonLookedUp>().ReverseMap();
             CreateMap<Person, PersonLookedUp>().ReverseMap();
         }
 
