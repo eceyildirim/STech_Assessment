@@ -12,12 +12,14 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using System.Linq;
 using Report.Resources;
+using MassTransit;
+using Shared.Models;
 
 namespace Report.Business.Services
 {
-    public class ReportService : BaseService<ReportService>, IReportService
+    public class ReportService : BaseService<ReportService>, IReportService, IConsumer<SharedReport>
     {
-        private readonly IMongoRepository<Report.Entity.Models.Report> _reportRepository;
+        private readonly IMongoRepository<Entity.Models.Report> _reportRepository;
 
         public ReportService(
                 IMongoRepository<Report.Entity.Models.Report> reportRepository,
@@ -26,23 +28,56 @@ namespace Report.Business.Services
             _reportRepository = reportRepository;
         }
 
-        public ServiceResponse<ReportModel> CreateReport(ReportModel report)
+        public async Task Consume(ConsumeContext<SharedReport> context)
+        {
+            var msg = context.Message;
+
+            var report = new ReportModel
+            {
+                ReportRequestDate = msg.ReportRequestDate,
+                Location = msg.Location,
+                NumberOfRegisteredPersons = msg.NumberOfRegisteredPersons,
+                NumberOfRegisteredPhones = msg.NumberOfRegisteredPersons,
+                ReportStatus = (Core.ReportStatus)msg.ReportStatus 
+            };
+
+            GenerateReport(report);
+        }
+
+        public ServiceResponse<ReportModel> GenerateReport(ReportModel report)
         {
             var res = new ServiceResponse<ReportModel>();
 
             var reportEntity = Mapper.Map<Report.Entity.Models.Report>(report);
 
-            var createPersonRes = _reportRepository.InsertOne(reportEntity);
+            var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && report.ReportStatus == x.ReportStatus && report.ReportStatus == Core.ReportStatus.Prepare).Result;
 
-            if (!createPersonRes.Successed || createPersonRes.Result == null)
+            if(reportState == null)
+            {
+                //insert report
+                var createPersonRes = _reportRepository.InsertOne(reportEntity);
+
+                if (!createPersonRes.Successed || createPersonRes.Result == null)
+                {
+                    res.Code = StatusCodes.Status500InternalServerError;
+                    res.Message = SystemMessage.Feedback_UnexpectedError;
+                    res.Successed = false;
+                    res.Errors = createPersonRes.Message;
+                }
+                res.Result = Mapper.Map<ReportModel>(createPersonRes.Result);
+
+                return res;
+            }
+
+            var completeReport = _reportRepository.ReplaceOne(reportEntity);
+
+            if (completeReport.Result == null)
             {
                 res.Code = StatusCodes.Status500InternalServerError;
                 res.Message = SystemMessage.Feedback_UnexpectedError;
                 res.Successed = false;
-                res.Errors = createPersonRes.Message;
+                return res;
             }
-
-            res.Result = Mapper.Map<ReportModel>(createPersonRes.Result);
 
             return res;
         }

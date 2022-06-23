@@ -8,6 +8,5 @@ namespace Report.Business.Interfaces
     public interface IQueueService
     {
         void ReceiveQueue(string channelName);
-        //void SendToQueue(QueueMessage message, string channelName);
     }
 }

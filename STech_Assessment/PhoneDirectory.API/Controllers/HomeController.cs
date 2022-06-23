@@ -21,7 +21,7 @@ namespace PhoneDirectory.API.Controllers
         public string API()
         {
 
-            return "SeturTech Assessment Rest API - v1";
+            return "SeturTech Assessment Phone Directory Rest API - v1";
         }
     }
 }

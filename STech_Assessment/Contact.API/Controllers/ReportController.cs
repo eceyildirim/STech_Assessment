@@ -49,7 +49,7 @@ namespace Report.API.Controllers
             //if (!validationResult.IsValid)
             //    return BadRequest(validationResult);
 
-            var created = _reportService.CreateReport(report);
+            var created = _reportService.GenerateReport(report);
 
             return Ok(created);
         }

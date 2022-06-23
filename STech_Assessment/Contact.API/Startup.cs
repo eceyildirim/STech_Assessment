@@ -37,7 +37,7 @@ namespace Report.API
 
             services.AddMassTransit(x =>
             {
-                x.AddConsumer<ReportConsumer>();
+                x.AddConsumer<ReportService>();
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
                     cfg.UseHealthCheck(provider);
@@ -50,7 +50,7 @@ namespace Report.API
                     {
                         ep.PrefetchCount = 16;
                         ep.UseMessageRetry(r => r.Interval(2, 100));
-                        ep.ConfigureConsumer<ReportConsumer>(provider);
+                        ep.ConfigureConsumer<ReportService>(provider);
                     });
                 }));
             });

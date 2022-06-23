@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Report.Entity.Models;
+using Shared.Models;
 
 namespace Report.Business.AutoMapper
 {

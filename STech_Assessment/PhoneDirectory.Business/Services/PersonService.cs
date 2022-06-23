@@ -276,6 +276,26 @@ namespace PhoneDirectory.Business.Services
             var res = new ServiceResponse<ReportRequest>();
 
             var reportReq = reportRequest;
+
+            var lookedUp = _personRepository.Aggregate()
+                .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
+                .Match(x => x.DeletedAt == null)
+                .SortByDescending(x => x.Name)
+                .ToList();
+
+            var person = lookedUp.FirstOrDefault();
+
+            res.Result = Mapper.Map<ReportRequest>(person);
+
+            if (res == null)
+            {
+                res.Code = StatusCodes.Status404NotFound;
+                res.Message = CustomMessage.UserNotFound;
+                res.Successed = false;
+
+                return res;
+            }
+
             reportReq.ReportStatus = ReportStatus.Complete;
 
             res.Result = reportReq;

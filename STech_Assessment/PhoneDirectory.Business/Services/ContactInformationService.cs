@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
+using MongoDB.Driver;
 using PhoneDirectory.Business.Base;
 using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
 using PhoneDirectory.Business.Validators;
+using PhoneDirectory.Core;
+using PhoneDirectory.Core.Requests;
 using PhoneDirectory.DAL.Interfaces;
 using PhoneDirectory.Entity.Models;
 using PhoneDirectory.Resources;
@@ -133,6 +136,38 @@ namespace PhoneDirectory.Business.Services
 
                 return res;
             }
+
+            return res;
+        }
+
+        public ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest)
+        {
+            var res = new ServiceResponse<ReportRequest>();
+
+            var reportReq = reportRequest;
+
+            var a = _contactInformationRepository.Aggregate()
+            .ToList();
+
+            
+            var report = _contactInformationRepository.FilterBy(x => x.DeletedAt == null
+                                                                    && x.ContactInformationType == ContactInformationType.Location 
+                                                                    && x.ContactInformationContent == reportRequest.Location).Result;
+
+            res.Result = Mapper.Map<ReportRequest>(report);
+
+            if (res == null)
+            {
+                res.Code = StatusCodes.Status404NotFound;
+                res.Message = CustomMessage.UserNotFound;
+                res.Successed = false;
+
+                return res;
+            }
+
+            reportReq.ReportStatus = ReportStatus.Complete;
+
+            res.Result = reportReq;
 
             return res;
         }

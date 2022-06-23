@@ -9,7 +9,7 @@ namespace Report.Business.Interfaces
 {
     public interface IReportService
     {
-        ServiceResponse<ReportModel> CreateReport(ReportModel person);
+        ServiceResponse<ReportModel> GenerateReport(ReportModel person);
         ServiceResponse<ReportModel> GetReportsById(string id);
         ServiceResponse<List<ReportModel>> GetReports();
     }

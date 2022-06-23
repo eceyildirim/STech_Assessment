@@ -15,9 +15,14 @@ namespace Report.API
 
             var msg = context.Message;
 
+
+            var report = msg;
+
+
+            //eğer reportstatus prepare ise insert
+            //değilse kayıt
             
 
         }
-
     }
 }

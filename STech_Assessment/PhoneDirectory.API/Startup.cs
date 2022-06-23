@@ -53,22 +53,6 @@ namespace PhoneDirectory.API
             });
             services.AddMassTransitHostedService();
 
-            //masstransit 1
-            //services.AddMassTransit(config => 
-            //{
-            //    config.UsingRabbitMq((ctx, cfg) =>
-            //    {
-            //        var uri = new Uri(Configuration["ServiceBus:Uri"]);
-            //        cfg.Host(uri, host =>
-            //        {
-            //            host.Username(Configuration["ServiceBus:Username"]);
-            //            host.Password(Configuration["ServiceBus:Password"]);
-            //        });
-            //    });
-            //});
-
-            //services.AddMassTransitHostedService(true);
-
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
@@ -133,14 +117,6 @@ namespace PhoneDirectory.API
             {
                 endpoints.MapControllers();
             });
-
-            //app.UseEndpoints(endpoints =>
-            //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
-            //});
         }
     }
 }

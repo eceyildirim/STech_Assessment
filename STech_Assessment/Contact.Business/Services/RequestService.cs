@@ -18,21 +18,11 @@ namespace Report.Business.Services
             // Add an Accept header for JSON format.
             client.DefaultRequestHeaders.Accept.Add(
             new MediaTypeWithQualityHeaderValue("application/json"));
-            //QueueMessage queueMessage = new QueueMessage();
-            //queueMessage.To = "google.com/uptadeuser";
-            //queueMessage.WebHookActionId = "f0d87f48-60ee-4991-8c46-caf97";
             // List data response.
             var content1 = new StringContent(postData, Encoding.UTF8, "application/json");
-            HttpResponseMessage response = client.PostAsync("", content1).Result;  // Blocking call! Program will wait here until a response is received or a timeout occurs.
+            HttpResponseMessage response = client.PostAsync("", content1).Result;
             if (response.IsSuccessStatusCode)
             {
-                // Parse the response body.
-                //var dataObjects = response.Content.ReadAsAsync<IEnumerable<DataObject>>().Result;  //Make sure to add a reference to System.Net.Http.Formatting.dll
-                //var dataObjects = JsonConvert.DeserializeObject<IEnumerable<DataObject>>(response.Content.ToString());
-                //foreach (var d in dataObjects)
-                //{
-                //    Console.WriteLine("{0}", d.Name);
-                //}
             }
             else
             {

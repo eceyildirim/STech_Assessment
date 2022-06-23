@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Contact.DAL\Report.DAL.csproj" />
     <ProjectReference Include="..\Contact.Resources\Report.Resources.csproj" />
+    <ProjectReference Include="..\Shared.Models\Shared.Models.csproj" />
   </ItemGroup>
 
 </Project>
