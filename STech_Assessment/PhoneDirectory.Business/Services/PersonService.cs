@@ -5,6 +5,7 @@ using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
 using PhoneDirectory.Core;
+using PhoneDirectory.Core.Requests;
 using PhoneDirectory.DAL.Interfaces;
 using PhoneDirectory.Entity.Models;
 using PhoneDirectory.Resources;
@@ -12,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneDirectory.Business.Services
 {
@@ -265,6 +267,19 @@ namespace PhoneDirectory.Business.Services
             //var persons = _personRepository.FilterBy(x => x.DeletedAt == null).Result;
 
             res.Result = Mapper.Map<List<PersonModel>>(persons);
+
+            return res;
+        }
+
+        public ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest)
+        {
+            var res = new ServiceResponse<ReportRequest>();
+
+            var reportReq = reportRequest;
+            reportReq.ReportStatus = ReportStatus.Complete;
+
+            res.Result = reportReq;
+            //var match = Builders<ContactInformation>.Filter.Where(x => x.);
 
             return res;
         }

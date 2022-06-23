@@ -11,4 +11,10 @@ namespace PhoneDirectory.Core
         Email = 2,
         Location = 3
     }
+
+    public enum ReportStatus
+    {
+        Prepare = 10,
+        Complete = -10
+    }
 }

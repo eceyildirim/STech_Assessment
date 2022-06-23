@@ -45,6 +45,8 @@ namespace PhoneDirectory.API
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IPersonService), typeof(PersonService));
+            services.AddScoped(typeof(IRequestService), typeof(RequestService));
+            services.AddScoped(typeof(IQueueService), typeof(QueueService));
             services.AddScoped(typeof(IContactInformationService), typeof(ContactInformationService));
 
             services.AddHttpContextAccessor();

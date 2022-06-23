@@ -1,7 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Validators;
+using PhoneDirectory.Core.Requests;
+using PhoneDirectory.Resources;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +17,13 @@ namespace PhoneDirectory.API.Controllers
     public class PersonController : BaseController<PersonController>
     {
         public readonly IPersonService _personService;
+        public readonly IQueueService _queueService;
         private readonly PersonValidator personValidator = new PersonValidator();
 
-        public PersonController(IPersonService personService)
+        public PersonController(IPersonService personService, IQueueService queueService)
         {
             _personService = personService;
+            _queueService = queueService;
         }
 
         [HttpPost, Route("create")]
@@ -51,6 +56,38 @@ namespace PhoneDirectory.API.Controllers
         public IActionResult GetAllPersons()
         {
             return Ok(_personService.GetAllPersons());
+        }
+
+        [HttpGet, Route("personreports/{location}")]
+        public IActionResult GetReportByLocation(string location)
+        {
+            if (string.IsNullOrEmpty(location))
+            {
+                return BadRequest(new { Message = CustomMessage.PleaseFillInTheRequiredFields });
+            }
+
+            var reportRequest = new ReportRequest
+            {
+                Location = location,
+                RequestDate = DateTime.UtcNow,
+                ReportStatus = Core.ReportStatus.Prepare
+            };
+
+            //send data
+            _queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
+
+            //generate report by location
+            var response = _personService.GetReportByLocation(reportRequest);
+
+            //send response result by location
+            _queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
+
+            if (!response.Successed)
+            {
+                return APIResponse(response);
+            }
+
+            return Ok();
         }
 
         //[HttpPut, Route("addcontact")]
@@ -90,15 +127,15 @@ namespace PhoneDirectory.API.Controllers
             return Ok(res.Result);
         }
 
-        [HttpGet, Route("persons")]
-        public IActionResult GetAllPersonsGroupByLocation()
-        {
-            var res = _personService.GetAllPersonsGroupByLocation();
-            if(!res.Successed)
-            {
-                return APIResponse(res);
-            }
-            return Ok(res.Result);
-        }
+        //[HttpGet, Route("persons")]
+        //public IActionResult GetAllPersonsGroupByLocation()
+        //{
+        //    var res = _personService.GetAllPersonsGroupByLocation();
+        //    if(!res.Successed)
+        //    {
+        //        return APIResponse(res);
+        //    }
+        //    return Ok(res.Result);
+        //}
     }
 }

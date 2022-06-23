@@ -26,9 +26,25 @@ namespace Report.Business.Services
             _reportRepository = reportRepository;
         }
 
-        public async Task<ServiceResponse<ReportModel>> CreateReport(ReportModel person)
+        public ServiceResponse<ReportModel> CreateReport(ReportModel report)
         {
-            throw new NotImplementedException();
+            var res = new ServiceResponse<ReportModel>();
+
+            var reportEntity = Mapper.Map<Report.Entity.Models.Report>(report);
+
+            var createPersonRes = _reportRepository.InsertOne(reportEntity);
+
+            if (!createPersonRes.Successed || createPersonRes.Result == null)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
+                res.Errors = createPersonRes.Message;
+            }
+
+            res.Result = Mapper.Map<ReportModel>(createPersonRes.Result);
+
+            return res;
         }
 
         public ServiceResponse<List<ReportModel>> GetReports()

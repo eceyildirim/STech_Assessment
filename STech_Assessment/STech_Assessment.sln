@@ -33,7 +33,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.Resources", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.Core", "PhoneDirectory.Core\PhoneDirectory.Core.csproj", "{A2010436-1382-42FD-9907-BE8BA5B0F088}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.Core", "Report.Core\Report.Core.csproj", "{1011BA76-75D3-414F-934A-00A0412B266A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Core", "Report.Core\Report.Core.csproj", "{1011BA76-75D3-414F-934A-00A0412B266A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{08A45407-9149-4A53-80E5-56332C541DC8}"
 EndProject

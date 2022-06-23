@@ -1,8 +1,10 @@
 ﻿using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
+using PhoneDirectory.Core.Requests;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace PhoneDirectory.Business.Interfaces
 {
@@ -14,6 +16,7 @@ namespace PhoneDirectory.Business.Interfaces
         //ServiceResponse<PersonModel> AddContact(PersonModel person);
         //ServiceResponse<PersonModel> DeleteContact(string id);
         ServiceResponse<PersonModel> GetPersonById(string id);
-        ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation();
+        ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest);
+        //ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation();
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Report.Business.Interfaces;
+using Report.Business.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +13,12 @@ namespace Report.API.Controllers
     public class ReportController : BaseController<ReportController>
     {
         public readonly IReportService _reportService;
+        public readonly IQueueService _queueService;
 
-        public ReportController(IReportService reportService)
+        public ReportController(IReportService reportService, IQueueService queueService)
         {
             _reportService = reportService;
+            _queueService = queueService;
         }
 
         [HttpGet, Route("{id}")]
@@ -34,6 +37,52 @@ namespace Report.API.Controllers
         public IActionResult GetAllReports()
         {
             return Ok(_reportService.GetReports());
+        }
+
+
+        [HttpPost, Route("create")]
+        public IActionResult CreateReport(ReportModel report)
+        {
+            //var validationResult = personValidator.Validate(report);
+
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult);
+
+            var created = _reportService.CreateReport(report);
+
+            return Ok(created);
+        }
+
+        [HttpGet, Route("insertreport")]
+        public IActionResult InsertReport()
+        {
+            //var validationResult = personValidator.Validate(report);
+
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult);
+
+            _queueService.ReceiveQueue("insertqueue");
+
+
+            //var created = _reportService.CreateReport();
+
+            return Ok();
+        }
+
+        [HttpGet, Route("updatereport")]
+        public IActionResult UpdateReport()
+        {
+            //var validationResult = personValidator.Validate(report);
+
+            //if (!validationResult.IsValid)
+            //    return BadRequest(validationResult);
+
+            _queueService.ReceiveQueue("updatereport");
+
+
+            //var created = _reportService.CreateReport();
+
+            return Ok();
         }
 
     }

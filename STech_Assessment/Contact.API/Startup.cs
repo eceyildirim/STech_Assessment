@@ -43,6 +43,8 @@ namespace Report.API
 
             services.AddScoped(typeof(IMongoRepository<>), typeof(MongoRepository<>));
             services.AddScoped(typeof(IReportService), typeof(ReportService));
+            services.AddScoped(typeof(IRequestService), typeof(RequestService));
+            services.AddScoped(typeof(IQueueService), typeof(QueueService));
 
             services.AddHttpContextAccessor();
             services.AddAutoMapper(typeof(MappingProfile));
