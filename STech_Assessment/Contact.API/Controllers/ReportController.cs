@@ -11,11 +11,29 @@ namespace Report.API.Controllers
     [ApiController]
     public class ReportController : BaseController<ReportController>
     {
-        public readonly IReportService _ReportService;
+        public readonly IReportService _reportService;
 
-        public ReportController(IReportService ReportService)
+        public ReportController(IReportService reportService)
         {
-            _ReportService = ReportService;
+            _reportService = reportService;
+        }
+
+        [HttpGet, Route("{id}")]
+        public IActionResult GetReportById(string id)
+        {
+            var res = _reportService.GetReportsById(id);
+            if (!res.Successed)
+            {
+                return APIResponse(res);
+            }
+
+            return Ok(res.Result);
+        }
+
+        [HttpGet, Route("")]
+        public IActionResult GetAllReports()
+        {
+            return Ok(_reportService.GetReports());
         }
 
     }

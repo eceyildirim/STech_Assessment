@@ -10,7 +10,7 @@ namespace Report.Business.Interfaces
     public interface IReportService
     {
         Task<ServiceResponse<ReportModel>> CreateReport(ReportModel person);
-        Task<ServiceResponse<ReportModel>> GetReportsByLocation(string location);
-        Task<ServiceResponse<List<ReportModel>>> GetReports();
+        ServiceResponse<ReportModel> GetReportsById(string id);
+        ServiceResponse<List<ReportModel>> GetReports();
     }
 }

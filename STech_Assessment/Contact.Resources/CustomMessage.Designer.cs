@@ -59,5 +59,14 @@ namespace Report.Resources {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Rapor Bulunamadı.
+        /// </summary>
+        public static string ReportNotFound {
+            get {
+                return ResourceManager.GetString("ReportNotFound", resourceCulture);
+            }
+        }
     }
 }
