@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Report.Business.Interfaces;
 using Report.Business.Models;
 using System;
@@ -77,7 +78,7 @@ namespace Report.API.Controllers
             //if (!validationResult.IsValid)
             //    return BadRequest(validationResult);
 
-            _queueService.ReceiveQueue("updatereport");
+            _queueService.ReceiveQueue("updatequeue");
 
 
             //var created = _reportService.CreateReport();

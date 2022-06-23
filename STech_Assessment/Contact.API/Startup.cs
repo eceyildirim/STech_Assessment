@@ -1,3 +1,5 @@
+using GreenPipes;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
@@ -32,6 +34,51 @@ namespace Report.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddMassTransit(x =>
+            {
+                x.AddConsumer<ReportConsumer>();
+                x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
+                {
+                    cfg.UseHealthCheck(provider);
+                    cfg.Host(new Uri("rabbitmq://localhost"), h =>
+                    {
+                        h.Username("guest");
+                        h.Password("guest");
+                    });
+                    cfg.ReceiveEndpoint("reportQueue", ep =>
+                    {
+                        ep.PrefetchCount = 16;
+                        ep.UseMessageRetry(r => r.Interval(2, 100));
+                        ep.ConfigureConsumer<ReportConsumer>(provider);
+                    });
+                }));
+            });
+            services.AddMassTransitHostedService();
+
+            //masstransit 1
+            //services.AddMassTransit(config =>
+            //{
+            //    config.AddConsumer<ReportConsumer>();
+            //    config.UsingRabbitMq((ctx, cfg) =>
+            //    {
+            //        var uri = new Uri(Configuration["ServiceBus:Uri"]);
+            //        cfg.Host(uri, host =>
+            //        {
+            //            host.Username(Configuration["ServiceBus:Username"]);
+            //            host.Password(Configuration["ServiceBus:Password"]);
+            //        });
+            //        //exchange
+            //        cfg.ReceiveEndpoint(Configuration["ServiceBus:Username"], c =>
+            //        {
+            //            c.ConfigureConsumer<ReportConsumer>(ctx);
+            //        });
+            //    });
+            //});
+
+            //services.AddMassTransitHostedService(true);
+
+
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 

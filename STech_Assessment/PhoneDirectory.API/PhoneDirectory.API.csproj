@@ -6,6 +6,9 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
+    <PackageReference Include="MassTransit" Version="8.0.3" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.3.1" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.9" />
     <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.0" />
     <PackageReference Include="MongoDB.Driver" Version="2.12.3" />
@@ -23,6 +26,7 @@
     <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
     <ProjectReference Include="..\PhoneDirectory.Core\PhoneDirectory.Core.csproj" />
     <ProjectReference Include="..\PhoneDirectory.Resources\PhoneDirectory.Resources.csproj" />
+    <ProjectReference Include="..\Shared.Models\Shared.Models.csproj" />
   </ItemGroup>
 
 </Project>

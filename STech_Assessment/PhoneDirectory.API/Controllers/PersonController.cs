@@ -1,10 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MassTransit;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using PhoneDirectory.Business.Interfaces;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Validators;
 using PhoneDirectory.Core.Requests;
 using PhoneDirectory.Resources;
+using Shared.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,14 +18,21 @@ namespace PhoneDirectory.API.Controllers
     [ApiController]
     public class PersonController : BaseController<PersonController>
     {
+        private readonly IBus _bus;
         public readonly IPersonService _personService;
         public readonly IQueueService _queueService;
+        //public readonly IPublishEndpoint _publishEndpoint; masstransit
         private readonly PersonValidator personValidator = new PersonValidator();
 
-        public PersonController(IPersonService personService, IQueueService queueService)
+        public PersonController(IPersonService personService, 
+            IQueueService queueService,
+            IBus bus
+           ) //IPublishEndpoint publishEndpoint
         {
             _personService = personService;
             _queueService = queueService;
+            _bus = bus;
+            //_publishEndpoint = publishEndpoint; masstransit
         }
 
         [HttpPost, Route("create")]
@@ -59,33 +68,44 @@ namespace PhoneDirectory.API.Controllers
         }
 
         [HttpGet, Route("personreports/{location}")]
-        public IActionResult GetReportByLocation(string location)
+        public async Task<IActionResult> GetReportByLocation(string location)
         {
             if (string.IsNullOrEmpty(location))
             {
                 return BadRequest(new { Message = CustomMessage.PleaseFillInTheRequiredFields });
             }
 
-            var reportRequest = new ReportRequest
+            var reportRequest = new SharedReport
             {
                 Location = location,
-                RequestDate = DateTime.UtcNow,
-                ReportStatus = Core.ReportStatus.Prepare
+                ReportRequestDate = DateTime.UtcNow,
+                ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
             };
 
+
+            Uri uri = new Uri("rabbitmq://localhost/reportQueue");
+            var endPoint = await _bus.GetSendEndpoint(uri);
+            await endPoint.Send(reportRequest);
+
+
+
+
+            //await _publishEndpoint.Publish<ReportModel>(reportRequest); mass transit
+
+
             //send data
-            _queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
+            //_queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
 
             //generate report by location
-            var response = _personService.GetReportByLocation(reportRequest);
+           // var response = _personService.GetReportByLocation(reportRequest);
 
             //send response result by location
-            _queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
+            //_queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
 
-            if (!response.Successed)
-            {
-                return APIResponse(response);
-            }
+            //if (!response.Successed)
+            //{
+            //    return APIResponse(response);
+           // }
 
             return Ok();
         }
