@@ -7,7 +7,7 @@ using System.Text;
 namespace Report.Entity.Models
 {
     [BsonCollection("reports")]
-    public class Report : Document
+    public class ReportM : Document
     {
         public DateTime ReportRequestDate { get; set; }
         public string Location { get; set; }

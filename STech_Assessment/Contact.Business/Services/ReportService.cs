@@ -19,10 +19,10 @@ namespace Report.Business.Services
 {
     public class ReportService : BaseService<ReportService>, IReportService, IConsumer<SharedReport>
     {
-        private readonly IMongoRepository<Entity.Models.Report> _reportRepository;
+        private readonly IMongoRepository<ReportM> _reportRepository;
 
         public ReportService(
-                IMongoRepository<Report.Entity.Models.Report> reportRepository,
+                IMongoRepository<ReportM> reportRepository,
                 IHttpContextAccessor contextAccessor) : base(contextAccessor)
         {
             _reportRepository = reportRepository;
@@ -48,11 +48,21 @@ namespace Report.Business.Services
         {
             var res = new ServiceResponse<ReportModel>();
 
-            var reportEntity = Mapper.Map<Report.Entity.Models.Report>(report);
+            var reportEntity = new ReportM
+            {
+                CreatedAt = report.CreatedAt,
+                UUID = report.UUID,
+                UpdatedAt = report.UpdatedAt,
+                DeletedAt = report.DeletedAt,
+                ReportRequestDate = report.ReportRequestDate,
+                Location = report.Location,
+                NumberOfRegisteredPersons = report.NumberOfRegisteredPersons,
+                NumberOfRegisteredPhones = report.NumberOfRegisteredPhones
+            };
 
             var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && report.ReportStatus == x.ReportStatus && report.ReportStatus == Core.ReportStatus.Prepare).Result;
 
-            if(reportState == null)
+            if(reportState.Count == 0)
             {
                 //insert report
                 var createPersonRes = _reportRepository.InsertOne(reportEntity);
@@ -64,7 +74,17 @@ namespace Report.Business.Services
                     res.Successed = false;
                     res.Errors = createPersonRes.Message;
                 }
-                res.Result = Mapper.Map<ReportModel>(createPersonRes.Result);
+
+                var rModel = new ReportModel
+                {
+                    ReportRequestDate = createPersonRes.Result.ReportRequestDate,
+                    Location = createPersonRes.Result.Location,
+                    NumberOfRegisteredPersons = createPersonRes.Result.NumberOfRegisteredPersons,
+                    NumberOfRegisteredPhones = createPersonRes.Result.NumberOfRegisteredPhones,
+                    ReportStatus = createPersonRes.Result.ReportStatus
+                };
+
+                res.Result = rModel;
 
                 return res;
             }
@@ -87,7 +107,7 @@ namespace Report.Business.Services
             var res = new ServiceResponse<List<ReportModel>>();
             #region [Get Data]
 
-            var match = Builders<Report.Entity.Models.Report>.Filter.Where(x => x.DeletedAt == null);
+            var match = Builders<Report.Entity.Models.ReportM>.Filter.Where(x => x.DeletedAt == null);
 
             var reports = _reportRepository.Aggregate()
                                            .Match(match)
@@ -105,11 +125,11 @@ namespace Report.Business.Services
         {
             var res = new ServiceResponse<ReportModel> { };
 
-            var match = Builders<Report.Entity.Models.Report>.Filter.Where(x => x.UUID == id);
+            var match = Builders<ReportM>.Filter.Where(x => x.UUID == id);
 
             var lookedUps = _reportRepository.Aggregate()
             .Match(match)
-            .As<Report.Entity.Models.Report>()
+            .As<Report.Entity.Models.ReportM>()
             .ToList();
 
             var report = lookedUps.FirstOrDefault();
