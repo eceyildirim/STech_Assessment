@@ -54,37 +54,37 @@ namespace Report.API.Controllers
             return Ok(created);
         }
 
-        [HttpGet, Route("insertreport")]
-        public IActionResult InsertReport()
-        {
-            //var validationResult = personValidator.Validate(report);
+        //[HttpGet, Route("insertreport")]
+        //public IActionResult InsertReport()
+        //{
+        //    //var validationResult = personValidator.Validate(report);
 
-            //if (!validationResult.IsValid)
-            //    return BadRequest(validationResult);
+        //    //if (!validationResult.IsValid)
+        //    //    return BadRequest(validationResult);
 
-            _queueService.ReceiveQueue("insertqueue");
-
-
-            //var created = _reportService.CreateReport();
-
-            return Ok();
-        }
-
-        [HttpGet, Route("updatereport")]
-        public IActionResult UpdateReport()
-        {
-            //var validationResult = personValidator.Validate(report);
-
-            //if (!validationResult.IsValid)
-            //    return BadRequest(validationResult);
-
-            _queueService.ReceiveQueue("updatequeue");
+        //    _queueService.ReceiveQueue("insertqueue");
 
 
-            //var created = _reportService.CreateReport();
+        //    //var created = _reportService.CreateReport();
 
-            return Ok();
-        }
+        //    return Ok();
+        //}
+
+        //[HttpGet, Route("updatereport")]
+        //public IActionResult UpdateReport()
+        //{
+        //    //var validationResult = personValidator.Validate(report);
+
+        //    //if (!validationResult.IsValid)
+        //    //    return BadRequest(validationResult);
+
+        //    _queueService.ReceiveQueue("updatequeue");
+
+
+        //    //var created = _reportService.CreateReport();
+
+        //    return Ok();
+        //}
 
     }
 }

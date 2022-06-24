@@ -150,11 +150,23 @@ namespace PhoneDirectory.Business.Services
             .ToList();
 
             
-            var report = _contactInformationRepository.FilterBy(x => x.DeletedAt == null
+            //number of person in the location
+            var numberOfPersonInTheLocation = _contactInformationRepository.FilterBy(x => x.DeletedAt == null
                                                                     && x.ContactInformationType == ContactInformationType.Location 
+                                                                    && x.ContactInformationContent == reportRequest.Location).Result.Count;
+
+            //number of phone number in the location
+            var numberOfPhoneNumberInTheLocation = _contactInformationRepository.FilterBy(x => x.DeletedAt == null
+                                                                    && x.ContactInformationType == ContactInformationType.Location
                                                                     && x.ContactInformationContent == reportRequest.Location).Result;
 
-            res.Result = Mapper.Map<ReportRequest>(report);
+
+            //personların content information type ı phone a eşit olanlar
+
+
+
+
+            res.Result = Mapper.Map<ReportRequest>(reportReq);
 
             if (res == null)
             {
