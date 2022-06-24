@@ -57,7 +57,8 @@ namespace Report.Business.Services
                 ReportRequestDate = report.ReportRequestDate,
                 Location = report.Location,
                 NumberOfRegisteredPersons = report.NumberOfRegisteredPersons,
-                NumberOfRegisteredPhones = report.NumberOfRegisteredPhones
+                NumberOfRegisteredPhones = report.NumberOfRegisteredPhones,
+                ReportStatus = report.ReportStatus
             };
 
             var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && report.ReportStatus == x.ReportStatus && report.ReportStatus == Core.ReportStatus.Prepare).Result;
@@ -77,11 +78,11 @@ namespace Report.Business.Services
 
                 var rModel = new ReportModel
                 {
-                    ReportRequestDate = createPersonRes.Result.ReportRequestDate,
-                    Location = createPersonRes.Result.Location,
-                    NumberOfRegisteredPersons = createPersonRes.Result.NumberOfRegisteredPersons,
-                    NumberOfRegisteredPhones = createPersonRes.Result.NumberOfRegisteredPhones,
-                    ReportStatus = createPersonRes.Result.ReportStatus
+                    ReportRequestDate = reportEntity.ReportRequestDate,
+                    Location = reportEntity.Location,
+                    NumberOfRegisteredPersons = reportEntity.NumberOfRegisteredPersons,
+                    NumberOfRegisteredPhones = reportEntity.NumberOfRegisteredPhones,
+                    ReportStatus = reportEntity.ReportStatus
                 };
 
                 res.Result = rModel;
