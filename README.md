@@ -1,5 +1,5 @@
 # STech_Assessment
-Bu proje **NoSQL(MongoDB)** ile **PhoneDirectory** ve **Report** mikroservislerinin **RabbitMQ Event Driven Communication** üzerinden haberleştiği bir yapı ile hazırlanmıştır.
+Bu proje **.Net Core** ve **NoSQL(MongoDB)** ile **PhoneDirectory** ve **Report** mikroservislerinin **RabbitMQ Event Driven Communication** üzerinden haberleştiği bir yapı ile hazırlanmıştır.
 
 #### PhoneDirectory Mikroservisi aşağıdaki maddeleri içermektedir;
 * ASP.Net Core Web API application
