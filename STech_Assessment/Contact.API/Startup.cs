@@ -1,4 +1,3 @@
-using GreenPipes;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
@@ -21,6 +20,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc;
+using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.OpenApi.Models;
+using System.IO;
+using System.Reflection;
+using GreenPipes;
 
 namespace Report.API
 {
@@ -34,7 +40,6 @@ namespace Report.API
         }
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddMassTransit(x =>
             {
                 x.AddConsumer<ReportService>();
@@ -55,29 +60,6 @@ namespace Report.API
                 }));
             });
             services.AddMassTransitHostedService();
-
-            //masstransit 1
-            //services.AddMassTransit(config =>
-            //{
-            //    config.AddConsumer<ReportConsumer>();
-            //    config.UsingRabbitMq((ctx, cfg) =>
-            //    {
-            //        var uri = new Uri(Configuration["ServiceBus:Uri"]);
-            //        cfg.Host(uri, host =>
-            //        {
-            //            host.Username(Configuration["ServiceBus:Username"]);
-            //            host.Password(Configuration["ServiceBus:Password"]);
-            //        });
-            //        //exchange
-            //        cfg.ReceiveEndpoint(Configuration["ServiceBus:Username"], c =>
-            //        {
-            //            c.ConfigureConsumer<ReportConsumer>(ctx);
-            //        });
-            //    });
-            //});
-
-            //services.AddMassTransitHostedService(true);
-
 
             services.Configure<MongoDbSettings>(Configuration.GetSection("MongoDbSettings"));
             services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
@@ -112,13 +94,22 @@ namespace Report.API
 
             services.AddControllers();
 
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Report Web API", Version = "v1" });
+            });
 
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Phone Directory API");
+            });
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -142,6 +133,13 @@ namespace Report.API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+            });
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "PhoneDirectory API v1");
+                c.RoutePrefix = "help";
             });
         }
     }
