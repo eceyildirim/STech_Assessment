@@ -27,6 +27,7 @@ namespace PhoneDirectory.Business.Services
         {
             _personRepository = personRepository;
         }
+
         public ServiceResponse<PersonModel> CreatePerson(PersonModel person)
         {
             var res = new ServiceResponse<PersonModel>();
@@ -206,7 +207,7 @@ namespace PhoneDirectory.Business.Services
             var res = new ServiceResponse<PersonModel> { };
 
             var lookedUp = _personRepository.Aggregate()
-                .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
+                //.Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
                 .Match(x => x.UUID == id)
                 .SortByDescending(x => x.Name)
                 .ToList();

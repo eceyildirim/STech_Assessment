@@ -16,90 +16,89 @@ namespace PhoneDirectory.API.Controllers
     [ApiController]
     public class ContactInformationController : BaseController<ContactInformationController>
     {
-        private readonly IContactInformationService _contactInformationService;
-        private readonly IPersonService _personService;
-        private readonly IBus _bus;
+        //private readonly IContactInformationService _contactInformationService;
+        //private readonly IPersonService _personService;
+        //private readonly IBus _bus;
 
-        public ContactInformationController
-            (
-                IContactInformationService contactInformationService,
-                IPersonService personService,
-                IBus bus)
-        {
-            _contactInformationService = contactInformationService;
-            _bus = bus;
-            _personService = personService;
-        }
+        //public ContactInformationController
+        //    (
+        //        IContactInformationService contactInformationService,
+        //        IPersonService personService,
+        //        IBus bus)
+        //{
+        //    _contactInformationService = contactInformationService;
+        //    _bus = bus;
+        //    _personService = personService;
+        //}
 
-        [HttpPost, Route("")]
-        public IActionResult AddContact(ContactInformationModel contactInformationModel)
-        {
-            var contact = _contactInformationService.AddContact(contactInformationModel);
+        //[HttpPost, Route("")]
+        //public IActionResult AddContact(ContactInformationModel contactInformationModel)
+        //{
+        //    var contact = _contactInformationService.AddContact(contactInformationModel);
 
-            if (!contact.Successed)
-            {
-                return APIResponse(contact);
-            }
+        //    if (!contact.Successed)
+        //    {
+        //        return APIResponse(contact);
+        //    }
 
-            return Ok(contact.Result);
-        }
+        //    return Ok(contact.Result);
+        //}
 
-        [HttpDelete("{id}")]
-        public IActionResult DeleteContact(string id)
-        {
-            var contact = _contactInformationService.DeleteContactById(id);
+        //[HttpDelete("{id}")]
+        //public IActionResult DeleteContact(string id)
+        //{
+        //    var contact = _contactInformationService.DeleteContactById(id);
 
-            if (!contact.Successed)
-            {
-                return APIResponse(contact);
-            }
+        //    if (!contact.Successed)
+        //    {
+        //        return APIResponse(contact);
+        //    }
 
-            return Ok(contact.Result);
-        }
+        //    return Ok(contact.Result);
+        //}
 
-        [HttpGet, Route("personreports/{location}")]
-        public async Task<IActionResult> GetReportByLocation(string location)
-        {
-            if (string.IsNullOrEmpty(location))
-            {
-                return BadRequest(new { Message = CustomMessage.PleaseFillInTheRequiredFields });
-            }
+        //[HttpGet, Route("personreports/{location}")]
+        //public async Task<IActionResult> GetReportByLocation(string location)
+        //{
+        //    if (string.IsNullOrEmpty(location))
+        //    {
+        //        return BadRequest(new { Message = CustomMessage.PleaseFillInTheRequiredFields });
+        //    }
 
-            var reportRequest = new SharedReport
-            {
-                Location = location,
-                ReportRequestDate = DateTime.UtcNow,
-                ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
-            };
+        //    var reportRequest = new SharedReport
+        //    {
+        //        Location = location,
+        //        ReportRequestDate = DateTime.UtcNow,
+        //        ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
+        //    };
 
-            //BURASI AÇILACAK
-            //Uri uri = new Uri("rabbitmq://localhost/reportQueue");
-            //var endPoint = await _bus.GetSendEndpoint(uri);
-            //await endPoint.Send(reportRequest);
-
-
-            var reportReq = new ReportRequest
-            {
-                Location = reportRequest.Location,
-                ReportRequestDate = reportRequest.ReportRequestDate
-            };
+        //    //Uri uri = new Uri("rabbitmq://localhost/reportQueue");
+        //    //var endPoint = await _bus.GetSendEndpoint(uri);
+        //    //await endPoint.Send(reportRequest);
 
 
-            //generate report by location
-            var response = _contactInformationService.GetReportByLocation(reportReq);
+        //    var reportReq = new ReportRequest
+        //    {
+        //        Location = reportRequest.Location,
+        //        ReportRequestDate = reportRequest.ReportRequestDate
+        //    };
 
-            //send data
-            //_queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
 
-            //send response result by location
-            //_queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
+        //    //generate report by location
+        //    var response = _contactInformationService.GetReportByLocation(reportReq);
 
-            //if (!response.Successed)
-            //{
-            //    return APIResponse(response);
-            // }
+        //    //send data
+        //    //_queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
 
-            return Ok();
-        }
+        //    //send response result by location
+        //    //_queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
+
+        //    //if (!response.Successed)
+        //    //{
+        //    //    return APIResponse(response);
+        //    // }
+
+        //    return Ok();
+        //}
     }
 }

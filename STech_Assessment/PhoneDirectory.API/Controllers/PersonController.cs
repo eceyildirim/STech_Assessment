@@ -116,7 +116,6 @@ namespace PhoneDirectory.API.Controllers
                 ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
             };
 
-            //BURASI AÇILACAK
             Uri uri = new Uri("rabbitmq://localhost/reportQueue");
             var endPoint = await _bus.GetSendEndpoint(uri);
             await endPoint.Send(reportRequest);
@@ -127,24 +126,11 @@ namespace PhoneDirectory.API.Controllers
                 ReportRequestDate = reportRequest.ReportRequestDate
             };
 
-
             //generate report by location
             var response = _personService.GetReportByLocation(reportReq);
 
             //send report 
             await endPoint.Send(response);
-
-
-            //send data
-            //_queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
-
-            //send response result by location
-            //_queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
-
-            //if (!response.Successed)
-            //{
-            //    return APIResponse(response);
-            // }
 
             return Ok();
         }
