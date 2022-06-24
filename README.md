@@ -21,11 +21,9 @@ Bu proje **NoSQL(MongoDB)** ile **PhoneDirectory** ve **Report** mikroservisleri
 * .Net Core 3.1 veya üstü
 
 #### Mikro hizmetleri aşağıdaki URL'lerle başlatabilirsiniz:
-*
-*
-*
-*
-*
-*
+* Report API -> https://localhost:44381/swagger/index.html
+* PhoneDirectory API -> https://localhost:44311/swagger/index.html
+* RabbitMQ Management Dashboard -> http://localhost:15672/ --guest/guest
+* MongoDB Compass -> mongodb+srv://admin:admin@phonedirectorycluster.rtcqo.mongodb.net/test
 
 
