@@ -13,10 +13,10 @@ namespace PhoneDirectory.Business.Interfaces
         ServiceResponse<PersonModel> CreatePerson(PersonModel person);
         ServiceResponse<PersonModel> DeletePerson(string id);
         ServiceResponse<List<PersonModel>> GetAllPersons();
-        //ServiceResponse<PersonModel> AddContact(PersonModel person);
-        //ServiceResponse<PersonModel> DeleteContact(string id);
+        ServiceResponse<PersonModel> AddContact(PersonModel person);
+        ServiceResponse<PersonModel> DeleteContact(string id);
         ServiceResponse<PersonModel> GetPersonById(string id);
         ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest);
-        //ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation();
+        ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation();
     }
 }

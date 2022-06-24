@@ -21,7 +21,7 @@ namespace Report.API.Controllers
         public string API()
         {
 
-            return "SeturTech Assessment Rest API - v1";
+            return "SeturTech Assessment Report Rest API - v1";
         }
     }
 }

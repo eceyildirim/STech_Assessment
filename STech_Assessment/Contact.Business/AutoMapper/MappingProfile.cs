@@ -18,6 +18,8 @@ namespace Report.Business.AutoMapper
         public void CreateReportMappings()
         {
             CreateMap<ReportModel, Report.Entity.Models.Report>().ReverseMap();
+            CreateMap<ReportModel, SharedReport>().ReverseMap();
+            CreateMap<SharedReport, ReportModel>().ReverseMap();
         }
     }
 }

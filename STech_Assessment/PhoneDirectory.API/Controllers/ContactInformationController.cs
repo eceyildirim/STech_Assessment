@@ -17,16 +17,18 @@ namespace PhoneDirectory.API.Controllers
     public class ContactInformationController : BaseController<ContactInformationController>
     {
         private readonly IContactInformationService _contactInformationService;
+        private readonly IPersonService _personService;
         private readonly IBus _bus;
 
         public ContactInformationController
             (
-                IContactInformationService contactInformationService, 
+                IContactInformationService contactInformationService,
                 IPersonService personService,
                 IBus bus)
         {
             _contactInformationService = contactInformationService;
             _bus = bus;
+            _personService = personService;
         }
 
         [HttpPost, Route("")]
@@ -70,10 +72,10 @@ namespace PhoneDirectory.API.Controllers
                 ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
             };
 
-
-            Uri uri = new Uri("rabbitmq://localhost/reportQueue");
-            var endPoint = await _bus.GetSendEndpoint(uri);
-            await endPoint.Send(reportRequest);
+            //BURASI AÇILACAK
+            //Uri uri = new Uri("rabbitmq://localhost/reportQueue");
+            //var endPoint = await _bus.GetSendEndpoint(uri);
+            //await endPoint.Send(reportRequest);
 
 
             var reportReq = new ReportRequest

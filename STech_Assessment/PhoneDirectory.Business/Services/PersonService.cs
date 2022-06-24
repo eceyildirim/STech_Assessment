@@ -105,99 +105,101 @@ namespace PhoneDirectory.Business.Services
             return res;
         }
 
-        //public ServiceResponse<PersonModel> AddContact(PersonModel model)
-        //{
-        //    var response = new ServiceResponse<PersonModel> { };
+        public ServiceResponse<PersonModel> AddContact(PersonModel model)
+        {
+            var response = new ServiceResponse<PersonModel> { };
 
-        //    var findPerson = _personRepository.FindById(model.UUID);
-        //    if (!findPerson.Successed || findPerson.Result == null)
-        //    {
-        //        response.Code = StatusCodes.Status404NotFound;
-        //        response.Message = CustomMessage.UserNotFound;
-        //        response.Successed = false;
-        //        response.Errors = findPerson.Message;
-        //        return response;
-        //    }
+            var findPerson = _personRepository.FindById(model.UUID);
+            if (!findPerson.Successed || findPerson.Result == null)
+            {
+                response.Code = StatusCodes.Status404NotFound;
+                response.Message = CustomMessage.UserNotFound;
+                response.Successed = false;
+                response.Errors = findPerson.Message;
+                return response;
+            }
 
-        //    var person = findPerson.Result;
+            var person = findPerson.Result;
 
-        //    person.InformationType = model.InformationType;
-        //    person.InformationContent = model.InformationContent;
-        //    person.UpdatedAt = DateTime.UtcNow;
+            person.PhoneNumber = model.PhoneNumber == null ? person.PhoneNumber : model.PhoneNumber;
+            person.Email = model.Email == null ? person.Email : model.Email;
+            person.Location = model.Location == null ? person.Location : model.Location;
+            person.UpdatedAt = DateTime.UtcNow;
 
-        //    var updatePerson = _personRepository.ReplaceOne(person);
-        //    if (!updatePerson.Successed)
-        //    {
-        //        response.Code = StatusCodes.Status500InternalServerError;
-        //        response.Message = SystemMessage.Feedback_UnexpectedError;
-        //        response.Successed = false;
-        //        response.Errors = updatePerson.Message;
-        //        return response;
-        //    }
+            var updatePerson = _personRepository.ReplaceOne(person);
+            if (!updatePerson.Successed)
+            {
+                response.Code = StatusCodes.Status500InternalServerError;
+                response.Message = SystemMessage.Feedback_UnexpectedError;
+                response.Successed = false;
+                response.Errors = updatePerson.Message;
+                return response;
+            }
 
-        //    response.Result = Mapper.Map<PersonModel>(updatePerson.Result);
-        //    return response;
-        //}
+            response.Result = Mapper.Map<PersonModel>(updatePerson.Result);
+            return response;
+        }
 
-        //public ServiceResponse<PersonModel> DeleteContact(string id)
-        //{
-        //    var res = new ServiceResponse<PersonModel> { };
+        public ServiceResponse<PersonModel> DeleteContact(string id)
+        {
+            var res = new ServiceResponse<PersonModel> { };
 
-        //    #region [Validation]
-        //    if (string.IsNullOrEmpty(id))
-        //    {
-        //        res.Code = StatusCodes.Status400BadRequest;
-        //        res.Message = CustomMessage.PleaseFillInTheRequiredFields;
-        //        res.Successed = false;
+            #region [Validation]
+            if (string.IsNullOrEmpty(id))
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.PleaseFillInTheRequiredFields;
+                res.Successed = false;
 
-        //        return res;
-        //    }
+                return res;
+            }
 
-        //    #endregion
+            #endregion
 
-        //    #region [Get Person]
-        //    var personRes = _personRepository.FindById(id);
-        //    if (!personRes.Successed)
-        //    {
-        //        res.Code = StatusCodes.Status500InternalServerError;
-        //        res.Message = SystemMessage.Feedback_UnexpectedError;
-        //        res.Successed = false;
+            #region [Get Person]
+            var personRes = _personRepository.FindById(id);
+            if (!personRes.Successed)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
 
-        //        return res;
-        //    }
+                return res;
+            }
 
-        //    if (personRes.Result == null)
-        //    {
-        //        res.Code = StatusCodes.Status400BadRequest;
-        //        res.Message = CustomMessage.UserNotFound;
-        //        res.Successed = false;
+            if (personRes.Result == null)
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.UserNotFound;
+                res.Successed = false;
 
-        //        return res;
-        //    }
-        //    #endregion
+                return res;
+            }
+            #endregion
 
-        //    #region [Delete Contact]
-        //    var person = personRes.Result;
+            #region [Delete Contact]
+            var person = personRes.Result;
 
-        //    person.InformationType = ContactInformationType.NotSelect;
-        //    person.InformationContent = null;
+            person.PhoneNumber = null;
+            person.Email = null;
+            person.Location = null;
 
-        //    var deleteRes = _personRepository.ReplaceOne(person);
-        //    if(!deleteRes.Successed)
-        //    {
-        //        res.Code = StatusCodes.Status500InternalServerError;
-        //        res.Message = SystemMessage.Feedback_UnexpectedError;
-        //        res.Errors = deleteRes.Message;
-        //        res.Successed = false;
+            var deleteRes = _personRepository.ReplaceOne(person);
+            if (!deleteRes.Successed)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Errors = deleteRes.Message;
+                res.Successed = false;
 
-        //        return res;
-        //    }
-        //    #endregion
+                return res;
+            }
+            #endregion
 
-        //    res.Result = Mapper.Map<PersonModel>(deleteRes.Result);
+            res.Result = Mapper.Map<PersonModel>(deleteRes.Result);
 
-        //    return res;
-        //}
+            return res;
+        }
 
         public ServiceResponse<PersonModel> GetPersonById(string id)
         {
@@ -277,15 +279,16 @@ namespace PhoneDirectory.Business.Services
 
             var reportReq = reportRequest;
 
-            var lookedUp = _personRepository.Aggregate()
-                .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
-                .Match(x => x.DeletedAt == null)
-                .SortByDescending(x => x.Name)
-                .ToList();
+            //number of person in the location
+            var numberOfPersonInTheLocation = _personRepository.FilterBy(x => x.DeletedAt == null
+                                                                    && x.Location == reportRequest.Location)
+                                                                   .Result.Count;
+            //number of phone number in the location
+            var numberOfPhoneNumberInTheLocation = _personRepository.FilterBy(x => x.DeletedAt == null
+                                                                    && x.Location == reportRequest.Location
+                                                                    && x.PhoneNumber != null).Result.Count;
 
-            var person = lookedUp.FirstOrDefault();
-
-            res.Result = Mapper.Map<ReportRequest>(person);
+            res.Result = Mapper.Map<ReportRequest>(reportReq);
 
             if (res == null)
             {
@@ -297,11 +300,45 @@ namespace PhoneDirectory.Business.Services
             }
 
             reportReq.ReportStatus = ReportStatus.Complete;
+            reportReq.NumberOfRegisteredPersons = numberOfPersonInTheLocation;
+            reportReq.NumberOfRegisteredPhones = numberOfPhoneNumberInTheLocation;
 
             res.Result = reportReq;
-            //var match = Builders<ContactInformation>.Filter.Where(x => x.);
 
             return res;
         }
+
+        //public ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest)
+        //{
+        //    var res = new ServiceResponse<ReportRequest>();
+
+        //    var reportReq = reportRequest;
+
+        //    var lookedUp = _personRepository.Aggregate()
+        //        .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
+        //        .Match(x => x.DeletedAt == null)
+        //        .SortByDescending(x => x.Name)
+        //        .ToList();
+
+        //    var person = lookedUp.FirstOrDefault();
+
+        //    res.Result = Mapper.Map<ReportRequest>(person);
+
+        //    if (res == null)
+        //    {
+        //        res.Code = StatusCodes.Status404NotFound;
+        //        res.Message = CustomMessage.UserNotFound;
+        //        res.Successed = false;
+
+        //        return res;
+        //    }
+
+        //    reportReq.ReportStatus = ReportStatus.Complete;
+
+        //    res.Result = reportReq;
+        //    //var match = Builders<ContactInformation>.Filter.Where(x => x.);
+
+        //    return res;
+        //}
     }
 }

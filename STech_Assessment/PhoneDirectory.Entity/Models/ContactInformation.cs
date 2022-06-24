@@ -17,6 +17,7 @@ namespace PhoneDirectory.Entity.Models
         public string PersonId { get; set; }
         public ContactInformationType ContactInformationType { get; set; }
         public string ContactInformationContent { get; set; }
+        public Person Person { get; set; }
     }
 
     public class ContanctInformationLookedUp : ContactInformation

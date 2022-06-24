@@ -20,13 +20,15 @@ namespace PhoneDirectory.API.Controllers
     {
         public readonly IPersonService _personService;
         public readonly IQueueService _queueService;
+        private readonly IBus _bus;
         private readonly PersonValidator personValidator = new PersonValidator();
 
         public PersonController(IPersonService personService, 
-            IQueueService queueService)
+            IQueueService queueService, IBus bus)
         {
             _personService = personService;
             _queueService = queueService;
+            _bus = bus;
         }
 
         [HttpPost, Route("create")]
@@ -71,6 +73,80 @@ namespace PhoneDirectory.API.Controllers
             }
 
             return Ok(res.Result);
+        }
+
+        [HttpPost, Route("")]
+        public IActionResult AddContact(PersonModel personModel)
+        {
+            var contact = _personService.AddContact(personModel);
+
+            if (!contact.Successed)
+            {
+                return APIResponse(contact);
+            }
+
+            return Ok(contact.Result);
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult DeleteContact(string id)
+        {
+            var contact = _personService.DeleteContact(id);
+
+            if (!contact.Successed)
+            {
+                return APIResponse(contact);
+            }
+
+            return Ok(contact.Result);
+        }
+
+        [HttpGet, Route("personreports/{location}")]
+        public async Task<IActionResult> GetReportByLocation(string location)
+        {
+            if (string.IsNullOrEmpty(location))
+            {
+                return BadRequest(new { Message = CustomMessage.PleaseFillInTheRequiredFields });
+            }
+
+            var reportRequest = new SharedReport
+            {
+                Location = location,
+                ReportRequestDate = DateTime.UtcNow,
+                ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
+            };
+
+            //BURASI AÇILACAK
+            Uri uri = new Uri("rabbitmq://localhost/reportQueue");
+            var endPoint = await _bus.GetSendEndpoint(uri);
+            await endPoint.Send(reportRequest);
+
+            var reportReq = new ReportRequest
+            {
+                Location = reportRequest.Location,
+                ReportRequestDate = reportRequest.ReportRequestDate
+            };
+
+
+            //generate report by location
+            var response = _personService.GetReportByLocation(reportReq);
+
+            //send report 
+            await endPoint.Send(response);
+
+
+            //send data
+            //_queueService.SendToQueue(new QueueMessage { Message = reportRequest, To= "https://localhost:44381/api/v1/reports/insertreport" }, "insertqueue");
+
+            //send response result by location
+            //_queueService.SendToQueue(new QueueMessage { Message = response.Result, To = "https://localhost:44381/api/v1/reports/updatereport" }, "updatequeue");
+
+            //if (!response.Successed)
+            //{
+            //    return APIResponse(response);
+            // }
+
+            return Ok();
         }
     }
 }
