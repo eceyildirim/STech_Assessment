@@ -52,6 +52,7 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel>();
 
+            //Control for person by id
             #region [Validation]
             if (string.IsNullOrEmpty(id))
             {
@@ -63,6 +64,7 @@ namespace PhoneDirectory.Business.Services
              }
             #endregion
 
+            //Find person by id
             #region [Get Person]
             var personRes = _personRepository.FindById(id);
             
@@ -85,6 +87,7 @@ namespace PhoneDirectory.Business.Services
             }
             #endregion
 
+            //Replace DeletedAt for current person
             #region [Delete Person]
             var person = personRes.Result;
             person.DeletedAt = DateTime.UtcNow;
@@ -110,6 +113,7 @@ namespace PhoneDirectory.Business.Services
         {
             var response = new ServiceResponse<PersonModel> { };
 
+            //Find person
             var findPerson = _personRepository.FindById(model.UUID);
             if (!findPerson.Successed || findPerson.Result == null)
             {
@@ -122,6 +126,7 @@ namespace PhoneDirectory.Business.Services
 
             var person = findPerson.Result;
 
+            //Change the contact information of the person one by one
             person.PhoneNumber = model.PhoneNumber == null ? person.PhoneNumber : model.PhoneNumber;
             person.Email = model.Email == null ? person.Email : model.Email;
             person.Location = model.Location == null ? person.Location : model.Location;
@@ -145,6 +150,7 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel> { };
 
+            //Person id control
             #region [Validation]
             if (string.IsNullOrEmpty(id))
             {
@@ -178,6 +184,7 @@ namespace PhoneDirectory.Business.Services
             }
             #endregion
 
+            //Replace contact information by person id
             #region [Delete Contact]
             var person = personRes.Result;
 
@@ -206,8 +213,20 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<PersonModel> { };
 
+            //Person id control
+            #region [Validation]
+            if (string.IsNullOrEmpty(id))
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.PleaseFillInTheRequiredFields;
+                res.Successed = false;
+
+                return res;
+            }
+
+            #endregion
+
             var lookedUp = _personRepository.Aggregate()
-                //.Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
                 .Match(x => x.UUID == id)
                 .SortByDescending(x => x.Name)
                 .ToList();
@@ -224,31 +243,6 @@ namespace PhoneDirectory.Business.Services
 
                 return res;
             }
-
-            return res;
-        }
-
-        public ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation()
-        {
-            //var persons = _personRepository.FilterBy(x => x.PersonLocation == person.Location).Result;
-            //return Mapper.Map<List<PersonModel>>(persons);
-            var res = new ServiceResponse<List<PersonModel>> { };
-
-            //var persons = _personRepository.Aggregate()
-            //        .Match(x => x.DeletedAt == null)
-            //        .Group(x => x.PersonLocation, g => new { Key = g.Key, Count = g.Count() })
-            //        .ToList();
-
-            //if(persons == null)
-            //{
-            //    res.Code = StatusCodes.Status404NotFound;
-            //    res.Message = CustomMessage.UserNotFound;
-            //    res.Successed = false;
-
-            //    return res;
-            //}
-
-            //res.Result = Mapper.Map<List<PersonModel>>(persons);
 
             return res;
         }
@@ -308,38 +302,5 @@ namespace PhoneDirectory.Business.Services
 
             return res;
         }
-
-        //public ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest)
-        //{
-        //    var res = new ServiceResponse<ReportRequest>();
-
-        //    var reportReq = reportRequest;
-
-        //    var lookedUp = _personRepository.Aggregate()
-        //        .Lookup<Person, PersonLookedUp>("contact_informations", "ContactInformationIds", "uuid", "ContactInformations")
-        //        .Match(x => x.DeletedAt == null)
-        //        .SortByDescending(x => x.Name)
-        //        .ToList();
-
-        //    var person = lookedUp.FirstOrDefault();
-
-        //    res.Result = Mapper.Map<ReportRequest>(person);
-
-        //    if (res == null)
-        //    {
-        //        res.Code = StatusCodes.Status404NotFound;
-        //        res.Message = CustomMessage.UserNotFound;
-        //        res.Successed = false;
-
-        //        return res;
-        //    }
-
-        //    reportReq.ReportStatus = ReportStatus.Complete;
-
-        //    res.Result = reportReq;
-        //    //var match = Builders<ContactInformation>.Filter.Where(x => x.);
-
-        //    return res;
-        //}
     }
 }

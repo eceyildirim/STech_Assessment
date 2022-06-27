@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Report.Business.Interfaces;
 using Report.Business.Models;
+using Report.Business.Validators;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace Report.API.Controllers
     {
         public readonly IReportService _reportService;
         public readonly IQueueService _queueService;
+        private readonly ReportValidator reportValidator = new ReportValidator();
 
         public ReportController(IReportService reportService, IQueueService queueService)
         {
@@ -44,47 +46,10 @@ namespace Report.API.Controllers
         [HttpPost, Route("create")]
         public IActionResult CreateReport(ReportModel report)
         {
-            //var validationResult = personValidator.Validate(report);
-
-            //if (!validationResult.IsValid)
-            //    return BadRequest(validationResult);
-
             var created = _reportService.GenerateReport(report);
 
             return Ok(created);
         }
-
-        //[HttpGet, Route("insertreport")]
-        //public IActionResult InsertReport()
-        //{
-        //    //var validationResult = personValidator.Validate(report);
-
-        //    //if (!validationResult.IsValid)
-        //    //    return BadRequest(validationResult);
-
-        //    _queueService.ReceiveQueue("insertqueue");
-
-
-        //    //var created = _reportService.CreateReport();
-
-        //    return Ok();
-        //}
-
-        //[HttpGet, Route("updatereport")]
-        //public IActionResult UpdateReport()
-        //{
-        //    //var validationResult = personValidator.Validate(report);
-
-        //    //if (!validationResult.IsValid)
-        //    //    return BadRequest(validationResult);
-
-        //    _queueService.ReceiveQueue("updatequeue");
-
-
-        //    //var created = _reportService.CreateReport();
-
-        //    return Ok();
-        //}
 
     }
 }

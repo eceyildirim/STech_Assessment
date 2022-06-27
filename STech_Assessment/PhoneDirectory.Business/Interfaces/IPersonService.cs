@@ -17,6 +17,5 @@ namespace PhoneDirectory.Business.Interfaces
         ServiceResponse<PersonModel> DeleteContact(string id);
         ServiceResponse<PersonModel> GetPersonById(string id);
         ServiceResponse<ReportRequest> GetReportByLocation(ReportRequest reportRequest);
-        ServiceResponse<List<PersonModel>> GetAllPersonsGroupByLocation();
     }
 }
