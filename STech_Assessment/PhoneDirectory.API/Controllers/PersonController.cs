@@ -19,15 +19,13 @@ namespace PhoneDirectory.API.Controllers
     public class PersonController : BaseController<PersonController>
     {
         public readonly IPersonService _personService;
-        public readonly IQueueService _queueService;
         private readonly IBus _bus;
         private readonly PersonValidator personValidator = new PersonValidator();
 
-        public PersonController(IPersonService personService, 
-            IQueueService queueService, IBus bus)
+        public PersonController(IPersonService personService, IBus bus
+            )
         {
             _personService = personService;
-            _queueService = queueService;
             _bus = bus;
         }
 
@@ -50,7 +48,7 @@ namespace PhoneDirectory.API.Controllers
             var res = _personService.DeletePerson(id);
             if (!res.Successed)
             {
-                return APIResponse(res);
+                return BadRequest(res);
             }
 
             return Ok(res.Result);
@@ -92,6 +90,11 @@ namespace PhoneDirectory.API.Controllers
         public IActionResult DeleteContact(string id)
         {
             var contact = _personService.DeleteContact(id);
+
+            if(contact == null)
+            {
+                return BadRequest(contact);
+            }
 
             if (!contact.Successed)
             {
