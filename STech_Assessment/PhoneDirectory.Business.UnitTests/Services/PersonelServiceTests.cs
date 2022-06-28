@@ -34,7 +34,7 @@ namespace PhoneDirectory.Business.UnitTests.Services
         {
             //Arrange
             var personsMock = _fixture.Create<ServiceResponse<PersonModel>>();
-            _personRepositoryMock.Setup(x => x.Aggregate().);
+            //_personRepositoryMock.Setup(x => x.Aggregate().);
 
             //Act
 
