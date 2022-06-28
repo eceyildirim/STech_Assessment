@@ -45,7 +45,7 @@ namespace Report.API
                 x.AddConsumer<ReportService>();
                 x.AddBus(provider => Bus.Factory.CreateUsingRabbitMq(cfg =>
                 {
-                    cfg.UseHealthCheck(provider);
+                    //cfg.UseHealthCheck(provider);
                     cfg.Host(new Uri("rabbitmq://localhost"), h =>
                     {
                         h.Username("guest");

@@ -60,7 +60,7 @@ namespace Report.Business.Services
                 ReportStatus = report.ReportStatus
             };
 
-            var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && report.ReportStatus == x.ReportStatus && report.ReportStatus == Core.ReportStatus.Prepare).Result;
+            var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && x.ReportStatus == Core.ReportStatus.Prepare).Result;
 
             if(reportState.Count == 0)
             {
@@ -88,6 +88,9 @@ namespace Report.Business.Services
 
                 return res;
             }
+
+            //reportEntity.UUID = reportState
+
 
             var completeReport = _reportRepository.ReplaceOne(reportEntity);
 

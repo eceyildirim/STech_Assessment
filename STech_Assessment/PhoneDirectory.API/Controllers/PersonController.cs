@@ -7,6 +7,8 @@ using PhoneDirectory.Business.Validators;
 using PhoneDirectory.Core.Requests;
 using PhoneDirectory.Resources;
 using Shared.Models;
+using Shared.Models.Interfaces;
+using Shared.Models.MQ;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,14 +21,15 @@ namespace PhoneDirectory.API.Controllers
     public class PersonController : BaseController<PersonController>
     {
         public readonly IPersonService _personService;
-        private readonly IBus _bus;
-        private readonly PersonValidator personValidator = new PersonValidator();
+        public readonly IBus _bus;
+        public readonly IRabbitMQService _rabbitMQService;
+        public readonly PersonValidator personValidator = new PersonValidator();
 
-        public PersonController(IPersonService personService, IBus bus
-            )
+        public PersonController(IPersonService personService, IBus bus, IRabbitMQService rabbitMQService)
         {
             _personService = personService;
             _bus = bus;
+            _rabbitMQService = rabbitMQService;
         }
 
         [HttpPost, Route("create")]
@@ -137,22 +140,35 @@ namespace PhoneDirectory.API.Controllers
                 ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
             };
 
-            Uri uri = new Uri("rabbitmq://localhost/reportQueue");
-            var endPoint = await _bus.GetSendEndpoint(uri);
-            await endPoint.Send(reportRequest);
-
-            var reportReq = new ReportRequest
+            await Task.CompletedTask.ContinueWith(task =>
             {
-                Location = reportRequest.Location,
-                ReportRequestDate = reportRequest.ReportRequestDate
-            };
+                _rabbitMQService.SendMessages(reportRequest);
+            }).ContinueWith(task2 =>
+            {
+                //Uri uri = new Uri(RabbitMQInformation.Uri);
+                //var endPoint = await _bus.GetSendEndpoint(uri);
+                //await endPoint.Send(reportRequest);
 
-            //generate report by location
-            var response = _personService.GetReportByLocation(reportReq);
+                var reportReq = new ReportRequest
+                {
+                    Location = reportRequest.Location,
+                    ReportRequestDate = reportRequest.ReportRequestDate
+                };
 
-            //send report 
-            await endPoint.Send(response);
+                //generate report by location
+                var response = _personService.GetReportByLocation(reportReq);
 
+                reportRequest.Location = reportReq.Location;
+                reportRequest.ReportRequestDate = reportReq.ReportRequestDate;
+                reportRequest.NumberOfRegisteredPersons = response.Result.NumberOfRegisteredPersons;
+                reportRequest.NumberOfRegisteredPhones = response.Result.NumberOfRegisteredPhones;
+                reportRequest.ReportStatus = (ReportStatus)response.Result.ReportStatus;
+
+                //send report 
+                _rabbitMQService.SendMessages(reportRequest);
+                //await endPoint.Send(response);
+            });
+           
             return Ok();
         }
     }
