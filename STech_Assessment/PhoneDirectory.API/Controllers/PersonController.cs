@@ -58,16 +58,34 @@ namespace PhoneDirectory.API.Controllers
         [HttpGet, Route("")]
         public IActionResult GetAllPersons()
         {
-            return Ok(_personService.GetAllPersons());
+            var res = _personService.GetAllPersons();
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
+            if(!res.Successed)
+            {
+                return BadRequest(res);
+            }
+
+            return Ok(res.Result);
         }
 
         [HttpGet, Route("{id}")]
         public IActionResult GetPersonById(string id)
         {
             var res = _personService.GetPersonById(id);
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
             if(!res.Successed)
             {
-                return APIResponse(res);
+                return BadRequest(res);
             }
 
             return Ok(res.Result);
@@ -93,12 +111,12 @@ namespace PhoneDirectory.API.Controllers
 
             if(contact == null)
             {
-                return BadRequest(contact);
+                return NotFound(contact);
             }
 
             if (!contact.Successed)
             {
-                return APIResponse(contact);
+                return BadRequest(contact);
             }
 
             return Ok(contact.Result);

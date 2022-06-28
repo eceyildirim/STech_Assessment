@@ -42,7 +42,7 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            //result.Should().BeAssignableTo<BadRequestResult>();
+            result.Should().BeAssignableTo<BadRequestObjectResult>();
             _personServiceMock.Verify(x => x.CreatePerson(request), Times.Never());
         }
 
@@ -61,7 +61,6 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<ServiceResponse<List<PersonModel>>>();
             result.Should().BeAssignableTo<OkObjectResult>();
             result.As<OkObjectResult>().Value
                 .Should()
@@ -69,8 +68,6 @@ namespace PhoneDirectory.API.UnitTests.Controllers
                 .And.BeOfType(personsMock.GetType());
 
             _personServiceMock.Verify(x => x.GetAllPersons(), Times.Once());
-
-            //return (IActionResult)res;
         }
 
 
@@ -88,10 +85,8 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<NotFoundResult>();
+            result.Should().BeAssignableTo<NotFoundObjectResult>();
             _personServiceMock.Verify(x => x.GetAllPersons(), Times.Once());
-
-            //return (IActionResult)response;
         }
 
         [Fact]
@@ -107,12 +102,7 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<ServiceResponse<PersonModel>>();
-            result.Should().BeAssignableTo<OkObjectResult>();
-            result.As<OkObjectResult>().Value
-                .Should()
-                .NotBeNull()
-                .And.BeOfType(personMock.GetType());
+            result.Should().BeAssignableTo<ObjectResult>();
 
             _personServiceMock.Verify(x => x.GetPersonById(id), Times.Once());
         }
@@ -132,45 +122,9 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<NotFoundResult>();
+            result.Should().BeAssignableTo<NotFoundObjectResult>();
             _personServiceMock.Verify(x => x.GetPersonById(id), Times.Once());
         }
-
-        [Fact]
-        public void GetPersonById_ShouldReturnBadRequest_WhenInputIsEqualsZero()
-        {
-            //Arrange
-            var response = _fixture.Create<ServiceResponse<PersonModel>>();
-            string id = "";
-            _personServiceMock.Setup(x => x.GetPersonById(id)).Returns(response);
-
-            //Act
-            var result = _personController.GetPersonById(id);
-
-            //Assert
-            result.Should().NotBeNull();
-            result.Should().BeAssignableTo<BadRequestResult>();
-            _personServiceMock.Verify(x => x.GetPersonById(id), Times.Never());
-        }
-
-        [Fact]
-        public void CreatePerson_ShouldReturnOkResponse_WhenValidRequest()
-        {
-            //Arrange
-            var request = _fixture.Create<PersonModel>();
-            var response = _fixture.Create<ServiceResponse<PersonModel>>();
-            _personServiceMock.Setup(x => x.CreatePerson(request)).Returns(response);
-
-            //Act
-            var result = _personController.CreatePerson(request);
-
-            //Assert
-            result.Should().NotBeNull();
-            result.Should().BeAssignableTo<ServiceResponse<PersonModel>>();
-            result.Should().BeAssignableTo<CreatedAtActionResult>();
-            _personServiceMock.Verify(x => x.CreatePerson(request), Times.Never());
-        }
-
 
         [Fact]
         public void DeletePerson_ShouldReturnNoContents_WhenDeletedARecord()
@@ -187,8 +141,9 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             result.Should().NotBeNull();
             result.Should().BeAssignableTo<BadRequestObjectResult>();
+            _personServiceMock.Verify(x => x.DeleteContact(id), Times.Never());
         }
-        
+
         [Fact]
         public void DeletePerson_ShouldReturnNotFound_WhenRecordNotFound()
         {
@@ -204,7 +159,7 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<BadRequestObjectResult>();
+            result.Should().BeAssignableTo<NotFoundObjectResult>();
             _personServiceMock.Verify(x => x.DeletePerson(id), Times.Never());
         }
 
@@ -221,8 +176,8 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<BadRequestResult>();
-            _personServiceMock.Verify(x => x.DeleteContact(id), Times.Never());
+            result.Should().BeAssignableTo<BadRequestObjectResult>();
+            _personServiceMock.Verify(x => x.DeleteContact(id), Times.Once());
         }
 
         [Fact]
@@ -241,24 +196,7 @@ namespace PhoneDirectory.API.UnitTests.Controllers
 
             //Assert
             result.Should().NotBeNull();
-            result.Should().BeAssignableTo<BadRequestResult>();
-            _personServiceMock.Verify(x => x.DeleteContact(id), Times.Never());
-        }
-
-        [Fact]
-        public void DeleteContact_ShouldReturnNotFound_WhenRecordNotFound()
-        {
-            //Arrange
-            var id = _fixture.Create<string>();
-            var request = _fixture.Create<ServiceResponse<PersonModel>>();
-            _personServiceMock.Setup(x => x.DeleteContact(id)).Returns(request);
-
-            //Act
-            var result = _personController.DeleteContact(id);
-
-            //Assert
-            result.Should().NotBeNull();
-            result.Should().BeAssignableTo<NotFoundResult>();
+            result.Should().BeAssignableTo<BadRequestObjectResult>();
             _personServiceMock.Verify(x => x.DeleteContact(id), Times.Once());
         }
     }

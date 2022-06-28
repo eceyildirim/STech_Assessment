@@ -176,7 +176,7 @@ namespace PhoneDirectory.Business.Services
 
             if (personRes.Result == null)
             {
-                res.Code = StatusCodes.Status400BadRequest;
+                res.Code = StatusCodes.Status404NotFound;
                 res.Message = CustomMessage.UserNotFound;
                 res.Successed = false;
 
