@@ -108,7 +108,7 @@ namespace Report.Business.Services
             var res = new ServiceResponse<List<ReportModel>>();
             #region [Get Data]
 
-            var match = Builders<Report.Entity.Models.ReportM>.Filter.Where(x => x.DeletedAt == null);
+            var match = Builders<ReportM>.Filter.Where(x => x.DeletedAt == null);
 
             var reports = _reportRepository.Aggregate()
                                            .Match(match)
@@ -126,11 +126,23 @@ namespace Report.Business.Services
         {
             var res = new ServiceResponse<ReportModel> { };
 
+            //Control report id
+            #region [Validation]
+            if (string.IsNullOrEmpty(id))
+            {
+                res.Code = StatusCodes.Status400BadRequest;
+                res.Message = CustomMessage.PleaseFillInTheRequiredFields;
+                res.Successed = false;
+
+                return res;
+            }
+            #endregion
+
             var match = Builders<ReportM>.Filter.Where(x => x.UUID == id);
 
             var lookedUps = _reportRepository.Aggregate()
             .Match(match)
-            .As<Report.Entity.Models.ReportM>()
+            .As<ReportM>()
             .ToList();
 
             var report = lookedUps.FirstOrDefault();
@@ -142,7 +154,6 @@ namespace Report.Business.Services
                 res.Successed = false;
 
                 return res;
-
             }
 
             res.Result = Mapper.Map<ReportModel>(report);

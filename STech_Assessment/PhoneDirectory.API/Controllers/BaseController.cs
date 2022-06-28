@@ -11,6 +11,8 @@ namespace PhoneDirectory.API.Controllers
 {
     public class BaseController<T> : ControllerBase
     {
+
+        //Service response messages
         protected IActionResult APIResponse(ServiceResponse response)
         {
             switch (response.Code)

@@ -61,6 +61,15 @@ namespace Report.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Fill In The Required Fields.
+        /// </summary>
+        public static string PleaseFillInTheRequiredFields {
+            get {
+                return ResourceManager.GetString("PleaseFillInTheRequiredFields", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Rapor Bulunamadı.
         /// </summary>
         public static string ReportNotFound {

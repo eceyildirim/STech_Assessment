@@ -30,6 +30,7 @@ namespace PhoneDirectory.Business.Services
         {
             var res = new ServiceResponse<ContactInformationModel> { };
 
+            //Contact validation for add operations
             #region [Validate]
             var valResult = contactInformationValidator.Validate(contactInformationModel);
             if (!valResult.IsValid)
@@ -61,6 +62,8 @@ namespace PhoneDirectory.Business.Services
             }
             #endregion
 
+
+            //add contact information
             var contactEntity = Mapper.Map<ContactInformation>(contactInformationModel);
             contactEntity.ContactInformationType = contactInformationModel.ContactInformationType;
             contactEntity.ContactInformationContent = contactInformationModel.ContactInformationContent;

@@ -19,15 +19,13 @@ namespace PhoneDirectory.API.Controllers
     public class PersonController : BaseController<PersonController>
     {
         public readonly IPersonService _personService;
-        public readonly IQueueService _queueService;
         private readonly IBus _bus;
         private readonly PersonValidator personValidator = new PersonValidator();
 
-        public PersonController(IPersonService personService, 
-            IQueueService queueService, IBus bus)
+        public PersonController(IPersonService personService, IBus bus
+            )
         {
             _personService = personService;
-            _queueService = queueService;
             _bus = bus;
         }
 
@@ -50,7 +48,7 @@ namespace PhoneDirectory.API.Controllers
             var res = _personService.DeletePerson(id);
             if (!res.Successed)
             {
-                return APIResponse(res);
+                return BadRequest(res);
             }
 
             return Ok(res.Result);
@@ -60,16 +58,34 @@ namespace PhoneDirectory.API.Controllers
         [HttpGet, Route("")]
         public IActionResult GetAllPersons()
         {
-            return Ok(_personService.GetAllPersons());
+            var res = _personService.GetAllPersons();
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
+            if(!res.Successed)
+            {
+                return BadRequest(res);
+            }
+
+            return Ok(res.Result);
         }
 
         [HttpGet, Route("{id}")]
         public IActionResult GetPersonById(string id)
         {
             var res = _personService.GetPersonById(id);
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
             if(!res.Successed)
             {
-                return APIResponse(res);
+                return BadRequest(res);
             }
 
             return Ok(res.Result);
@@ -93,9 +109,14 @@ namespace PhoneDirectory.API.Controllers
         {
             var contact = _personService.DeleteContact(id);
 
+            if(contact == null)
+            {
+                return NotFound(contact);
+            }
+
             if (!contact.Successed)
             {
-                return APIResponse(contact);
+                return BadRequest(contact);
             }
 
             return Ok(contact.Result);

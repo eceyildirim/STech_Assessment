@@ -11,7 +11,7 @@ namespace Report.API.Controllers
 {
     public class BaseController<T> : ControllerBase
     {
-        private ILogger<T> _logger;
+        //Service response messages
         protected IActionResult APIResponse(ServiceResponse response)
         {
             switch (response.Code)

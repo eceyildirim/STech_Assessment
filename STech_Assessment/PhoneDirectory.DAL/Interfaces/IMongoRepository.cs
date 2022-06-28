@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace PhoneDirectory.DAL.Interfaces
 {
+    //Generic repository
     public interface IMongoRepository<TDocument> where TDocument : IDocument
     {
         RepositoryResponse<TDocument> InsertOne(TDocument document);
