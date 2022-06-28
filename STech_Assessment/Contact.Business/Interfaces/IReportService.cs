@@ -12,5 +12,6 @@ namespace Report.Business.Interfaces
         ServiceResponse<ReportModel> GenerateReport(ReportModel person);
         ServiceResponse<ReportModel> GetReportsById(string id);
         ServiceResponse<List<ReportModel>> GetReports();
+
     }
 }

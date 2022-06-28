@@ -37,17 +37,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared.Models", "Shared.Mod
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Report.Core", "Report.Core\Report.Core.csproj", "{003A3FF9-0C9B-41FF-AD01-B40864936CF9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.UnitTests", "PhoneDirectory.UnitTests\PhoneDirectory.UnitTests.csproj", "{2945DE61-C91F-4D4D-8674-B34332769672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.API.UnitTests", "PhoneDirectory.API.UnitTests\PhoneDirectory.API.UnitTests.csproj", "{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.API.UnitTests", "PhoneDirectory.API.UnitTests\PhoneDirectory.API.UnitTests.csproj", "{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.Business.UnitTests", "PhoneDirectory.Business.UnitTests\PhoneDirectory.Business.UnitTests.csproj", "{9817B516-8A24-47D3-A590-D1486CCE4F99}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.Business.UnitTests", "PhoneDirectory.Business.UnitTests\PhoneDirectory.Business.UnitTests.csproj", "{9817B516-8A24-47D3-A590-D1486CCE4F99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.Entity.UnitTests", "PhoneDirectory.Entity.UnitTests\PhoneDirectory.Entity.UnitTests.csproj", "{CBACC342-7D36-4C7D-9E07-386056175B1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.Entity.UnitTests", "PhoneDirectory.Entity.UnitTests\PhoneDirectory.Entity.UnitTests.csproj", "{CBACC342-7D36-4C7D-9E07-386056175B1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.DAL.UnitTests", "PhoneDirectory.DAL.UnitTests\PhoneDirectory.DAL.UnitTests.csproj", "{D7CFD999-090E-4B08-A598-459AB511E3E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.DAL.UnitTests", "PhoneDirectory.DAL.UnitTests\PhoneDirectory.DAL.UnitTests.csproj", "{D7CFD999-090E-4B08-A598-459AB511E3E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PhoneDirectory.Core.UnitTests", "PhoneDirectory.Core.UnitTests\PhoneDirectory.Core.UnitTests.csproj", "{81C7F3E4-6A77-42ED-B13A-77559347DCAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhoneDirectory.Core.UnitTests", "PhoneDirectory.Core.UnitTests\PhoneDirectory.Core.UnitTests.csproj", "{81C7F3E4-6A77-42ED-B13A-77559347DCAA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Report.API.UnitTests", "Report.API.UnitTests\Report.API.UnitTests.csproj", "{958AD793-5EF9-4F16-8B03-70F90A8D826C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,10 +111,6 @@ Global
 		{003A3FF9-0C9B-41FF-AD01-B40864936CF9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{003A3FF9-0C9B-41FF-AD01-B40864936CF9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{003A3FF9-0C9B-41FF-AD01-B40864936CF9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2945DE61-C91F-4D4D-8674-B34332769672}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2945DE61-C91F-4D4D-8674-B34332769672}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2945DE61-C91F-4D4D-8674-B34332769672}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2945DE61-C91F-4D4D-8674-B34332769672}.Release|Any CPU.Build.0 = Release|Any CPU
 		{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -135,6 +131,10 @@ Global
 		{81C7F3E4-6A77-42ED-B13A-77559347DCAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81C7F3E4-6A77-42ED-B13A-77559347DCAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81C7F3E4-6A77-42ED-B13A-77559347DCAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{958AD793-5EF9-4F16-8B03-70F90A8D826C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958AD793-5EF9-4F16-8B03-70F90A8D826C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958AD793-5EF9-4F16-8B03-70F90A8D826C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958AD793-5EF9-4F16-8B03-70F90A8D826C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -155,12 +155,12 @@ Global
 		{0416C10A-145B-48C1-9924-8FBD5A7618F6} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{A2010436-1382-42FD-9907-BE8BA5B0F088} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{003A3FF9-0C9B-41FF-AD01-B40864936CF9} = {5AE6DAE6-6822-4A9F-8406-87E622526035}
-		{2945DE61-C91F-4D4D-8674-B34332769672} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{433F705C-30B4-4DAB-8A89-C2BEBEEEE2A3} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{9817B516-8A24-47D3-A590-D1486CCE4F99} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{CBACC342-7D36-4C7D-9E07-386056175B1F} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{D7CFD999-090E-4B08-A598-459AB511E3E2} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
 		{81C7F3E4-6A77-42ED-B13A-77559347DCAA} = {B402B3C4-4F16-46BE-A421-F45D52A790C7}
+		{958AD793-5EF9-4F16-8B03-70F90A8D826C} = {5AE6DAE6-6822-4A9F-8406-87E622526035}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {2CE66A23-F903-42CA-991A-0FF523BE187C}
