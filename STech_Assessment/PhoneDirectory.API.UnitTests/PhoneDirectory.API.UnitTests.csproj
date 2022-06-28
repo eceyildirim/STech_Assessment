@@ -24,6 +24,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PhoneDirectory.API\PhoneDirectory.API.csproj" />
+    <ProjectReference Include="..\PhoneDirectory.Business\PhoneDirectory.Business.csproj" />
   </ItemGroup>
 
 </Project>
