@@ -43,7 +43,6 @@ namespace Report.Business.Services
 
             GenerateReport(report);
         }
-
         public ServiceResponse<ReportModel> GenerateReport(ReportModel report)
         {
             var res = new ServiceResponse<ReportModel>();
@@ -125,7 +124,6 @@ namespace Report.Business.Services
         public ServiceResponse<ReportModel> GetReportsById(string id)
         {
             var res = new ServiceResponse<ReportModel> { };
-
             //Control report id
             #region [Validation]
             if (string.IsNullOrEmpty(id))

@@ -15,19 +15,23 @@ namespace Report.API.Controllers
     public class ReportController : BaseController<ReportController>
     {
         public readonly IReportService _reportService;
-        public readonly IQueueService _queueService;
         private readonly ReportValidator reportValidator = new ReportValidator();
 
-        public ReportController(IReportService reportService, IQueueService queueService)
+        public ReportController(IReportService reportService)
         {
-            _reportService = reportService;
-            _queueService = queueService;
+            _reportService = reportService;          
         }
 
         [HttpGet, Route("{id}")]
         public IActionResult GetReportById(string id)
         {
             var res = _reportService.GetReportsById(id);
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
             if (!res.Successed)
             {
                 return APIResponse(res);
@@ -39,7 +43,19 @@ namespace Report.API.Controllers
         [HttpGet, Route("")]
         public IActionResult GetAllReports()
         {
-            return Ok(_reportService.GetReports());
+            var res = _reportService.GetReports();
+
+            if(res == null)
+            {
+                return NotFound(res);
+            }
+
+            if(!res.Successed)
+            {
+                return BadRequest(res);
+            }
+
+            return Ok(res.Result);
         }
 
 
