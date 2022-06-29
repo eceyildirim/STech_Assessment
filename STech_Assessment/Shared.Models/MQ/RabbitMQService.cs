@@ -22,11 +22,18 @@ namespace Shared.Models.MQ
         //    throw new NotImplementedException();
         //}
 
-        public async void SendMessages(SharedReport sharedReport)
+        public async Task SendMessages(SharedReport sharedReport)
         {
             Uri uri = new Uri(RabbitMQInformation.Uri);
             var endPoint = await _bus.GetSendEndpoint(uri);
             await endPoint.Send(sharedReport);
+        }
+
+        public void SendMessagesSync(SharedReport sharedReport)
+        {
+            Uri uri = new Uri(RabbitMQInformation.Uri);
+            var endPoint = _bus.GetSendEndpoint(uri);
+            //endPoint.Send(sharedReport);
         }
     }
 }

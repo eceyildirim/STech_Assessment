@@ -140,35 +140,28 @@ namespace PhoneDirectory.API.Controllers
                 ReportStatus = (ReportStatus)Core.ReportStatus.Prepare
             };
 
-            await Task.CompletedTask.ContinueWith(task =>
+
+            await _rabbitMQService.SendMessages(reportRequest);
+
+            var reportReq = new ReportRequest
             {
-                _rabbitMQService.SendMessages(reportRequest);
-            }).ContinueWith(task2 =>
-            {
-                //Uri uri = new Uri(RabbitMQInformation.Uri);
-                //var endPoint = await _bus.GetSendEndpoint(uri);
-                //await endPoint.Send(reportRequest);
+                Location = reportRequest.Location,
+                ReportRequestDate = reportRequest.ReportRequestDate
+            };
 
-                var reportReq = new ReportRequest
-                {
-                    Location = reportRequest.Location,
-                    ReportRequestDate = reportRequest.ReportRequestDate
-                };
+            //generate report by location
+            var response = _personService.GetReportByLocation(reportReq);
 
-                //generate report by location
-                var response = _personService.GetReportByLocation(reportReq);
+            reportRequest.Location = reportReq.Location;
+            reportRequest.ReportRequestDate = reportReq.ReportRequestDate;
+            reportRequest.NumberOfRegisteredPersons = response.Result.NumberOfRegisteredPersons;
+            reportRequest.NumberOfRegisteredPhones = response.Result.NumberOfRegisteredPhones;
+            reportRequest.ReportStatus = (ReportStatus)response.Result.ReportStatus;
 
-                reportRequest.Location = reportReq.Location;
-                reportRequest.ReportRequestDate = reportReq.ReportRequestDate;
-                reportRequest.NumberOfRegisteredPersons = response.Result.NumberOfRegisteredPersons;
-                reportRequest.NumberOfRegisteredPhones = response.Result.NumberOfRegisteredPhones;
-                reportRequest.ReportStatus = (ReportStatus)response.Result.ReportStatus;
+            //send report 
+            await _rabbitMQService.SendMessages(reportRequest);
 
-                //send report 
-                _rabbitMQService.SendMessages(reportRequest);
-                //await endPoint.Send(response);
-            });
-           
+
             return Ok();
         }
     }

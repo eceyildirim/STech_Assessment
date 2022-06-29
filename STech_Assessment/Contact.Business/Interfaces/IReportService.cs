@@ -10,6 +10,7 @@ namespace Report.Business.Interfaces
     public interface IReportService
     {
         ServiceResponse<ReportModel> GenerateReport(ReportModel person);
+        ServiceResponse<ReportModel> UpdateGenerateReport(ReportModel person);
         ServiceResponse<ReportModel> GetReportsById(string id);
         ServiceResponse<List<ReportModel>> GetReports();
 

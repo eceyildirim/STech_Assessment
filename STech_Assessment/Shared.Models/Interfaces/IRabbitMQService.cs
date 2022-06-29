@@ -8,7 +8,7 @@ namespace Shared.Models.Interfaces
     public interface IRabbitMQService
     {
         //Send message
-        void SendMessages(SharedReport sharedReport);
+        Task SendMessages(SharedReport sharedReport);
 
         //Receive message
         //Task<SharedReport> ReceiveMessages(SharedReport sharedReport);
