@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc;
 using PhoneDirectory.Business.Models;
 using PhoneDirectory.Business.Responses;
 using System.Collections.Generic;
+using Shared.Models.Interfaces;
 
 namespace PhoneDirectory.API.UnitTests.Controllers
 {
@@ -19,13 +20,14 @@ namespace PhoneDirectory.API.UnitTests.Controllers
         private readonly IFixture _fixture;
         private readonly Mock<IPersonService> _personServiceMock;
         private readonly PersonController _personController;
+        private readonly IRabbitMQService _rabbitMQService;
         private readonly IBus _bus;
 
         public PersonControllerTest()
         {
             _fixture = new Fixture();
             _personServiceMock = _fixture.Freeze<Mock<IPersonService>>();
-            _personController = new PersonController(_personServiceMock.Object, _bus); //creates the implementation in-memory
+            _personController = new PersonController(_personServiceMock.Object, _bus, _rabbitMQService); //creates the implementation in-memory
         }
 
         [Fact]
