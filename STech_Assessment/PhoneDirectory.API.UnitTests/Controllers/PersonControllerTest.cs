@@ -64,10 +64,6 @@ namespace PhoneDirectory.API.UnitTests.Controllers
             //Assert
             result.Should().NotBeNull();
             result.Should().BeAssignableTo<OkObjectResult>();
-            result.As<OkObjectResult>().Value
-                .Should()
-                .NotBeNull()
-                .And.BeOfType(personsMock.GetType());
 
             _personServiceMock.Verify(x => x.GetAllPersons(), Times.Once());
         }
