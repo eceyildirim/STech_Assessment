@@ -26,6 +26,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.OpenApi.Models;
 using System.IO;
 using System.Reflection;
+using Shared.Models.Interfaces;
+using Shared.Models.MQ;
 
 namespace PhoneDirectory.API
 {
@@ -68,6 +70,7 @@ namespace PhoneDirectory.API
             services.AddScoped(typeof(IPersonService), typeof(PersonService));
             services.AddScoped(typeof(IRequestService), typeof(RequestService));
             services.AddScoped(typeof(IQueueService), typeof(QueueService));
+            services.AddScoped(typeof(IRabbitMQService), typeof(RabbitMQService));
             services.AddScoped(typeof(IContactInformationService), typeof(ContactInformationService));
 
             services.AddHttpContextAccessor();

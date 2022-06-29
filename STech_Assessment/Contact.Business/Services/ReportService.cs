@@ -41,8 +41,49 @@ namespace Report.Business.Services
                 ReportStatus = (Core.ReportStatus)msg.ReportStatus 
             };
 
-            GenerateReport(report);
+            if(report.ReportStatus == Core.ReportStatus.Prepare)
+            {
+                GenerateReport(report);
+            }
+            else
+            {
+                UpdateGenerateReport(report);
+            }
         }
+
+        public ServiceResponse<ReportModel> UpdateGenerateReport(ReportModel report)
+        {
+            var res = new ServiceResponse<ReportModel>();
+            var reportEntity = new ReportM
+            {
+                CreatedAt = report.CreatedAt,
+                UUID = report.UUID,
+                UpdatedAt = report.UpdatedAt,
+                DeletedAt = report.DeletedAt,
+                ReportRequestDate = report.ReportRequestDate,
+                Location = report.Location,
+                NumberOfRegisteredPersons = report.NumberOfRegisteredPersons,
+                NumberOfRegisteredPhones = report.NumberOfRegisteredPhones,
+                ReportStatus = report.ReportStatus
+            };
+
+            var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && x.ReportStatus == Core.ReportStatus.Prepare).Result;
+
+            reportEntity.UUID = reportState[0].UUID;
+            
+            var completeReport = _reportRepository.ReplaceOne(reportEntity);
+
+            if (completeReport.Result == null)
+            {
+                res.Code = StatusCodes.Status500InternalServerError;
+                res.Message = SystemMessage.Feedback_UnexpectedError;
+                res.Successed = false;
+                return res;
+            }
+
+            return res;
+        }
+
         public ServiceResponse<ReportModel> GenerateReport(ReportModel report)
         {
             var res = new ServiceResponse<ReportModel>();
@@ -60,47 +101,93 @@ namespace Report.Business.Services
                 ReportStatus = report.ReportStatus
             };
 
-            var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && report.ReportStatus == x.ReportStatus && report.ReportStatus == Core.ReportStatus.Prepare).Result;
+            //insert report
+            var createPersonRes = _reportRepository.InsertOne(reportEntity);
 
-            if(reportState.Count == 0)
-            {
-                //insert report
-                var createPersonRes = _reportRepository.InsertOne(reportEntity);
-
-                if (!createPersonRes.Successed || createPersonRes.Result == null)
-                {
-                    res.Code = StatusCodes.Status500InternalServerError;
-                    res.Message = SystemMessage.Feedback_UnexpectedError;
-                    res.Successed = false;
-                    res.Errors = createPersonRes.Message;
-                }
-
-                var rModel = new ReportModel
-                {
-                    ReportRequestDate = reportEntity.ReportRequestDate,
-                    Location = reportEntity.Location,
-                    NumberOfRegisteredPersons = reportEntity.NumberOfRegisteredPersons,
-                    NumberOfRegisteredPhones = reportEntity.NumberOfRegisteredPhones,
-                    ReportStatus = reportEntity.ReportStatus
-                };
-
-                res.Result = rModel;
-
-                return res;
-            }
-
-            var completeReport = _reportRepository.ReplaceOne(reportEntity);
-
-            if (completeReport.Result == null)
+            if (!createPersonRes.Successed || createPersonRes.Result == null)
             {
                 res.Code = StatusCodes.Status500InternalServerError;
                 res.Message = SystemMessage.Feedback_UnexpectedError;
                 res.Successed = false;
-                return res;
+                res.Errors = createPersonRes.Message;
             }
+
+            var rModel = new ReportModel
+            {
+                ReportRequestDate = reportEntity.ReportRequestDate,
+                Location = reportEntity.Location,
+                NumberOfRegisteredPersons = reportEntity.NumberOfRegisteredPersons,
+                NumberOfRegisteredPhones = reportEntity.NumberOfRegisteredPhones,
+                ReportStatus = reportEntity.ReportStatus
+            };
+
+            res.Result = rModel;
 
             return res;
         }
+
+
+        //public ServiceResponse<ReportModel> GenerateReport2(ReportModel report)
+        //{
+        //    var res = new ServiceResponse<ReportModel>();
+
+        //    var reportEntity = new ReportM
+        //    {
+        //        CreatedAt = report.CreatedAt,
+        //        UUID = report.UUID,
+        //        UpdatedAt = report.UpdatedAt,
+        //        DeletedAt = report.DeletedAt,
+        //        ReportRequestDate = report.ReportRequestDate,
+        //        Location = report.Location,
+        //        NumberOfRegisteredPersons = report.NumberOfRegisteredPersons,
+        //        NumberOfRegisteredPhones = report.NumberOfRegisteredPhones,
+        //        ReportStatus = report.ReportStatus
+        //    };
+
+        //    var reportState = _reportRepository.FilterBy(x => x.Location == report.Location && x.ReportRequestDate == report.ReportRequestDate && x.ReportStatus == Core.ReportStatus.Prepare).Result;
+
+        //    if(reportState.Count == 0)
+        //    {
+        //        //insert report
+        //        var createPersonRes = _reportRepository.InsertOne(reportEntity);
+
+        //        if (!createPersonRes.Successed || createPersonRes.Result == null)
+        //        {
+        //            res.Code = StatusCodes.Status500InternalServerError;
+        //            res.Message = SystemMessage.Feedback_UnexpectedError;
+        //            res.Successed = false;
+        //            res.Errors = createPersonRes.Message;
+        //        }
+
+        //        var rModel = new ReportModel
+        //        {
+        //            ReportRequestDate = reportEntity.ReportRequestDate,
+        //            Location = reportEntity.Location,
+        //            NumberOfRegisteredPersons = reportEntity.NumberOfRegisteredPersons,
+        //            NumberOfRegisteredPhones = reportEntity.NumberOfRegisteredPhones,
+        //            ReportStatus = reportEntity.ReportStatus
+        //        };
+
+        //        res.Result = rModel;
+
+        //        return res;
+        //    }
+
+        //    //reportEntity.UUID = reportState
+
+
+        //    var completeReport = _reportRepository.ReplaceOne(reportEntity);
+
+        //    if (completeReport.Result == null)
+        //    {
+        //        res.Code = StatusCodes.Status500InternalServerError;
+        //        res.Message = SystemMessage.Feedback_UnexpectedError;
+        //        res.Successed = false;
+        //        return res;
+        //    }
+
+        //    return res;
+        //}
 
         public ServiceResponse<List<ReportModel>> GetReports()
         {

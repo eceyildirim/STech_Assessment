@@ -19,9 +19,4 @@ namespace PhoneDirectory.Entity.Models
         public string ContactInformationContent { get; set; }
         public Person Person { get; set; }
     }
-
-    public class ContanctInformationLookedUp : ContactInformation
-    {
-        public Person Person { get; set; }
-    }
 }
