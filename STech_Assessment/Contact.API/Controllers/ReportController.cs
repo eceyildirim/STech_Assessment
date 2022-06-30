@@ -50,11 +50,6 @@ namespace Report.API.Controllers
                 return NotFound(res);
             }
 
-            if(!res.Successed)
-            {
-                return BadRequest(res);
-            }
-
             return Ok(res.Result);
         }
 
@@ -63,6 +58,11 @@ namespace Report.API.Controllers
         public IActionResult CreateReport(ReportModel report)
         {
             var created = _reportService.GenerateReport(report);
+
+            if(!created.Successed)
+            {
+                return BadRequest(created);
+            }
 
             return Ok(created);
         }

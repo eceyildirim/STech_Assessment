@@ -40,10 +40,6 @@ namespace Report.API.UnitTests
             //Assert
             result.Should().NotBeNull();
             result.Should().BeAssignableTo<OkObjectResult>();
-            result.As<OkObjectResult>().Value
-                .Should()
-                .NotBeNull()
-                .And.BeOfType(reportsMock.GetType());
 
             _reportServiceMock.Verify(x => x.GetReports(), Times.Once());
         }
@@ -102,6 +98,24 @@ namespace Report.API.UnitTests
             result.Should().NotBeNull();
             result.Should().BeAssignableTo<NotFoundObjectResult>();
             _reportServiceMock.Verify(x => x.GetReportsById(id), Times.Once());
+        }
+
+        [Fact]
+        public void CreateReport_ShouldReturnBadRequest_WhenInvalidRequest()
+        {
+            //Arrange
+            var request = _fixture.Create<ReportModel>();
+            _reportController.ModelState.AddModelError("Subject", "The Subject field is required.");
+            var response = _fixture.Create<ServiceResponse<ReportModel>>();
+            _reportServiceMock.Setup(x => x.GenerateReport(request)).Returns(response);
+
+            //Act
+            var result = _reportController.CreateReport(request);
+
+            //Assert
+            result.Should().NotBeNull();
+            result.Should().BeAssignableTo<BadRequestObjectResult>();
+            _reportServiceMock.Verify(x => x.GenerateReport(request), Times.Once());
         }
     }
 }
