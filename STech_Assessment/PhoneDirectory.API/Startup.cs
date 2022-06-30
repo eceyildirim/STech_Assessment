@@ -71,7 +71,6 @@ namespace PhoneDirectory.API
             services.AddScoped(typeof(IRequestService), typeof(RequestService));
             services.AddScoped(typeof(IQueueService), typeof(QueueService));
             services.AddScoped(typeof(IRabbitMQService), typeof(RabbitMQService));
-            services.AddScoped(typeof(IContactInformationService), typeof(ContactInformationService));
 
             services.AddHttpContextAccessor();
             services.AddAutoMapper(typeof(MappingProfile));

@@ -68,11 +68,6 @@ namespace PhoneDirectory.API.Controllers
                 return NotFound(res);
             }
 
-            if(!res.Successed)
-            {
-                return BadRequest(res);
-            }
-
             return Ok(res.Result);
         }
 

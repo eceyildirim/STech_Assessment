@@ -265,6 +265,15 @@ namespace PhoneDirectory.Business.Services
 
             res.Result = Mapper.Map<List<PersonModel>>(persons);
 
+            if (res == null)
+            {
+                res.Code = StatusCodes.Status404NotFound;
+                res.Message = CustomMessage.UserNotFound;
+                res.Successed = false;
+
+                return res;
+            }
+
             return res;
         }
 

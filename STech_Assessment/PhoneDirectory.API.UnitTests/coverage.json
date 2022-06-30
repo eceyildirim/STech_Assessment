@@ -1,0 +1,2365 @@
+{
+  "PhoneDirectory.API.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Program.cs": {
+      "PhoneDirectory.API.Program": {
+        "System.Void PhoneDirectory.API.Program::Main(System.String[])": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Hosting.IHostBuilder PhoneDirectory.API.Program::CreateHostBuilder(System.String[])": {
+          "Lines": {
+            "21": 0,
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Startup.cs": {
+      "PhoneDirectory.API.Startup": {
+        "Microsoft.Extensions.Configuration.IConfiguration PhoneDirectory.API.Startup::get_Configuration()": {
+          "Lines": {
+            "36": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.API.Startup::ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)": {
+          "Lines": {
+            "45": 0,
+            "46": 0,
+            "47": 0,
+            "48": 0,
+            "49": 0,
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "64": 0,
+            "66": 0,
+            "67": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "75": 0,
+            "76": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "87": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "92": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "99": 0,
+            "100": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.API.Startup::Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)": {
+          "Lines": {
+            "104": 0,
+            "105": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "115": 0,
+            "117": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "128": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0
+          },
+          "Branches": [
+            {
+              "Line": 110,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 110,
+              "Offset": 55,
+              "EndOffset": 66,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PhoneDirectory.API.Startup::.ctor(Microsoft.Extensions.Configuration.IConfiguration)": {
+          "Lines": {
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Helpers\\AppSettings.cs": {
+      "PhoneDirectory.API.Helpers.AppSettings": {
+        "System.String PhoneDirectory.API.Helpers.AppSettings::get_ApplicationUrl()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.API.Helpers.AppSettings::get_AppName()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Helpers\\CustomContractResolver.cs": {
+      "PhoneDirectory.API.Helpers.CustomContractResolver": {
+        "Newtonsoft.Json.Serialization.JsonContract PhoneDirectory.API.Helpers.CustomContractResolver::ResolveContract(System.Type)": {
+          "Lines": {
+            "24": 0,
+            "25": 0,
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 48,
+              "EndOffset": 50,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 48,
+              "EndOffset": 63,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 66,
+              "EndOffset": 68,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 66,
+              "EndOffset": 83,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PhoneDirectory.API.Helpers.CustomContractResolver::.ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Helpers\\LocalizationMiddleware.cs": {
+      "PhoneDirectory.API.Helpers.LocalizationMiddleware": {
+        "System.Void PhoneDirectory.API.Helpers.LocalizationMiddleware::.ctor(Microsoft.AspNetCore.Http.RequestDelegate)": {
+          "Lines": {
+            "14": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0
+          },
+          "Branches": []
+        }
+      },
+      "PhoneDirectory.API.Helpers.LocalizationMiddleware/<Invoke>d__2": {
+        "System.Void PhoneDirectory.API.Helpers.LocalizationMiddleware/<Invoke>d__2::MoveNext()": {
+          "Lines": {
+            "20": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 117,
+              "EndOffset": 119,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 117,
+              "EndOffset": 139,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Controllers\\BaseController.cs": {
+      "PhoneDirectory.API.Controllers.BaseController`1": {
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.BaseController`1::APIResponse(PhoneDirectory.Business.Responses.ServiceResponse)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "21": 0,
+            "23": 0,
+            "25": 0,
+            "27": 0,
+            "29": 0,
+            "31": 0,
+            "33": 0
+          },
+          "Branches": [
+            {
+              "Line": 18,
+              "Offset": 16,
+              "EndOffset": 20,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 16,
+              "EndOffset": 54,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 64,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 84,
+              "Path": 2,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 104,
+              "Path": 4,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 129,
+              "Path": 5,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 149,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 18,
+              "Offset": 27,
+              "EndOffset": 149,
+              "Path": 3,
+              "Ordinal": 5,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Controllers\\HomeController.cs": {
+      "PhoneDirectory.API.Controllers.HomeController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.HomeController::Index()": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.API.Controllers.HomeController::API()": {
+          "Lines": {
+            "22": 0,
+            "24": 0,
+            "25": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.API\\Controllers\\PersonController.cs": {
+      "PhoneDirectory.API.Controllers.PersonController": {
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::CreatePerson(PhoneDirectory.Business.Models.PersonModel)": {
+          "Lines": {
+            "37": 2,
+            "38": 2,
+            "40": 2,
+            "41": 2,
+            "43": 0,
+            "45": 0,
+            "46": 2
+          },
+          "Branches": [
+            {
+              "Line": 40,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 40,
+              "Offset": 25,
+              "EndOffset": 37,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::DeletePersonById(System.String)": {
+          "Lines": {
+            "50": 1,
+            "51": 1,
+            "52": 1,
+            "53": 1,
+            "54": 1,
+            "57": 0,
+            "59": 1
+          },
+          "Branches": [
+            {
+              "Line": 52,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 52,
+              "Offset": 25,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::GetAllPersons()": {
+          "Lines": {
+            "63": 2,
+            "64": 2,
+            "66": 2,
+            "67": 1,
+            "68": 1,
+            "71": 1,
+            "72": 2
+          },
+          "Branches": [
+            {
+              "Line": 66,
+              "Offset": 19,
+              "EndOffset": 21,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 66,
+              "Offset": 19,
+              "EndOffset": 32,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::GetPersonById(System.String)": {
+          "Lines": {
+            "76": 3,
+            "77": 3,
+            "79": 3,
+            "80": 2,
+            "81": 2,
+            "84": 1,
+            "85": 1,
+            "86": 1,
+            "89": 0,
+            "90": 3
+          },
+          "Branches": [
+            {
+              "Line": 79,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 79,
+              "Offset": 20,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 1
+            },
+            {
+              "Line": 84,
+              "Offset": 44,
+              "EndOffset": 57,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::AddContact(PhoneDirectory.Business.Models.PersonModel)": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "102": 0,
+            "103": 0
+          },
+          "Branches": [
+            {
+              "Line": 97,
+              "Offset": 25,
+              "EndOffset": 27,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 97,
+              "Offset": 25,
+              "EndOffset": 38,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "Microsoft.AspNetCore.Mvc.IActionResult PhoneDirectory.API.Controllers.PersonController::DeleteContact(System.String)": {
+          "Lines": {
+            "107": 3,
+            "108": 3,
+            "110": 3,
+            "111": 1,
+            "112": 1,
+            "115": 2,
+            "116": 2,
+            "117": 2,
+            "120": 0,
+            "121": 3
+          },
+          "Branches": [
+            {
+              "Line": 110,
+              "Offset": 20,
+              "EndOffset": 22,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 110,
+              "Offset": 20,
+              "EndOffset": 33,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 115,
+              "Offset": 44,
+              "EndOffset": 46,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 2
+            },
+            {
+              "Line": 115,
+              "Offset": 44,
+              "EndOffset": 57,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PhoneDirectory.API.Controllers.PersonController::.ctor(PhoneDirectory.Business.Interfaces.IPersonService,MassTransit.IBus,Shared.Models.Interfaces.IRabbitMQService)": {
+          "Lines": {
+            "26": 11,
+            "28": 11,
+            "29": 11,
+            "30": 11,
+            "31": 11,
+            "32": 11,
+            "33": 11
+          },
+          "Branches": []
+        }
+      },
+      "PhoneDirectory.API.Controllers.PersonController/<GetReportByLocation>d__11": {
+        "System.Void PhoneDirectory.API.Controllers.PersonController/<GetReportByLocation>d__11::MoveNext()": {
+          "Lines": {
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "134": 0,
+            "135": 0,
+            "136": 0,
+            "139": 0,
+            "141": 0,
+            "142": 0,
+            "143": 0,
+            "144": 0,
+            "145": 0,
+            "148": 0,
+            "150": 0,
+            "151": 0,
+            "152": 0,
+            "153": 0,
+            "154": 0,
+            "157": 0,
+            "160": 0,
+            "161": 0
+          },
+          "Branches": [
+            {
+              "Line": 126,
+              "Offset": 42,
+              "EndOffset": 44,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 126,
+              "Offset": 42,
+              "EndOffset": 72,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    }
+  },
+  "PhoneDirectory.Business.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Validators\\PersonValidator.cs": {
+      "PhoneDirectory.Business.Validators.PersonValidator": {
+        "System.Void PhoneDirectory.Business.Validators.PersonValidator::.ctor()": {
+          "Lines": {
+            "12": 11,
+            "13": 11,
+            "14": 15,
+            "15": 15,
+            "16": 11,
+            "17": 11,
+            "18": 15,
+            "19": 11
+          },
+          "Branches": [
+            {
+              "Line": 14,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 14,
+              "Offset": 6,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 15,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 15,
+              "Offset": 6,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            },
+            {
+              "Line": 18,
+              "Offset": 6,
+              "EndOffset": 8,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 2
+            },
+            {
+              "Line": 18,
+              "Offset": 6,
+              "EndOffset": 19,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 2
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Services\\PersonService.cs": {
+      "PhoneDirectory.Business.Services.PersonService": {
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Business.Models.PersonModel> PhoneDirectory.Business.Services.PersonService::CreatePerson(PhoneDirectory.Business.Models.PersonModel)": {
+          "Lines": {
+            "32": 0,
+            "33": 0,
+            "34": 0,
+            "36": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "46": 0,
+            "48": 0,
+            "49": 0
+          },
+          "Branches": [
+            {
+              "Line": 38,
+              "Offset": 39,
+              "EndOffset": 41,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 39,
+              "EndOffset": 52,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 55,
+              "EndOffset": 57,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 38,
+              "Offset": 55,
+              "EndOffset": 104,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Business.Models.PersonModel> PhoneDirectory.Business.Services.PersonService::DeletePerson(System.String)": {
+          "Lines": {
+            "52": 0,
+            "53": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "63": 0,
+            "69": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "77": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "86": 0,
+            "92": 0,
+            "93": 0,
+            "95": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "103": 0,
+            "107": 0,
+            "109": 0,
+            "110": 0
+          },
+          "Branches": [
+            {
+              "Line": 57,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 57,
+              "Offset": 17,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 71,
+              "Offset": 86,
+              "EndOffset": 88,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 71,
+              "Offset": 86,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 142,
+              "EndOffset": 144,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 80,
+              "Offset": 142,
+              "EndOffset": 182,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 97,
+              "Offset": 232,
+              "EndOffset": 234,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 97,
+              "Offset": 232,
+              "EndOffset": 272,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Business.Models.PersonModel> PhoneDirectory.Business.Services.PersonService::AddContact(PhoneDirectory.Business.Models.PersonModel)": {
+          "Lines": {
+            "113": 0,
+            "114": 0,
+            "117": 0,
+            "118": 0,
+            "119": 0,
+            "120": 0,
+            "121": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "127": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0,
+            "135": 0,
+            "136": 0,
+            "137": 0,
+            "138": 0,
+            "139": 0,
+            "140": 0,
+            "141": 0,
+            "142": 0,
+            "145": 0,
+            "146": 0,
+            "147": 0
+          },
+          "Branches": [
+            {
+              "Line": 118,
+              "Offset": 31,
+              "EndOffset": 33,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 31,
+              "EndOffset": 44,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 49,
+              "EndOffset": 51,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 118,
+              "Offset": 49,
+              "EndOffset": 105,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 130,
+              "Offset": 119,
+              "EndOffset": 121,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 130,
+              "Offset": 119,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 148,
+              "EndOffset": 150,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 131,
+              "Offset": 148,
+              "EndOffset": 158,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 177,
+              "EndOffset": 179,
+              "Path": 0,
+              "Ordinal": 8,
+              "Hits": 0
+            },
+            {
+              "Line": 132,
+              "Offset": 177,
+              "EndOffset": 187,
+              "Path": 1,
+              "Ordinal": 9,
+              "Hits": 0
+            },
+            {
+              "Line": 136,
+              "Offset": 242,
+              "EndOffset": 244,
+              "Path": 0,
+              "Ordinal": 10,
+              "Hits": 0
+            },
+            {
+              "Line": 136,
+              "Offset": 242,
+              "EndOffset": 295,
+              "Path": 1,
+              "Ordinal": 11,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Business.Models.PersonModel> PhoneDirectory.Business.Services.PersonService::DeleteContact(System.String)": {
+          "Lines": {
+            "150": 0,
+            "151": 0,
+            "155": 0,
+            "156": 0,
+            "157": 0,
+            "158": 0,
+            "159": 0,
+            "161": 0,
+            "167": 0,
+            "168": 0,
+            "169": 0,
+            "170": 0,
+            "171": 0,
+            "172": 0,
+            "174": 0,
+            "177": 0,
+            "178": 0,
+            "179": 0,
+            "180": 0,
+            "181": 0,
+            "183": 0,
+            "189": 0,
+            "191": 0,
+            "192": 0,
+            "193": 0,
+            "195": 0,
+            "196": 0,
+            "197": 0,
+            "198": 0,
+            "199": 0,
+            "200": 0,
+            "201": 0,
+            "203": 0,
+            "207": 0,
+            "209": 0,
+            "210": 0
+          },
+          "Branches": [
+            {
+              "Line": 155,
+              "Offset": 17,
+              "EndOffset": 19,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 155,
+              "Offset": 17,
+              "EndOffset": 60,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 168,
+              "Offset": 86,
+              "EndOffset": 88,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 168,
+              "Offset": 86,
+              "EndOffset": 129,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 142,
+              "EndOffset": 144,
+              "Path": 0,
+              "Ordinal": 4,
+              "Hits": 0
+            },
+            {
+              "Line": 177,
+              "Offset": 142,
+              "EndOffset": 185,
+              "Path": 1,
+              "Ordinal": 5,
+              "Hits": 0
+            },
+            {
+              "Line": 196,
+              "Offset": 242,
+              "EndOffset": 244,
+              "Path": 0,
+              "Ordinal": 6,
+              "Hits": 0
+            },
+            {
+              "Line": 196,
+              "Offset": 242,
+              "EndOffset": 295,
+              "Path": 1,
+              "Ordinal": 7,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Business.Models.PersonModel> PhoneDirectory.Business.Services.PersonService::GetPersonById(System.String)": {
+          "Lines": {
+            "213": 0,
+            "214": 0,
+            "218": 0,
+            "219": 0,
+            "220": 0,
+            "221": 0,
+            "222": 0,
+            "224": 0,
+            "229": 0,
+            "230": 0,
+            "231": 0,
+            "232": 0,
+            "234": 0,
+            "236": 0,
+            "238": 0,
+            "239": 0,
+            "240": 0,
+            "241": 0,
+            "242": 0,
+            "244": 0,
+            "247": 0,
+            "248": 0
+          },
+          "Branches": [
+            {
+              "Line": 218,
+              "Offset": 35,
+              "EndOffset": 37,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 218,
+              "Offset": 35,
+              "EndOffset": 78,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            },
+            {
+              "Line": 238,
+              "Offset": 306,
+              "EndOffset": 308,
+              "Path": 0,
+              "Ordinal": 2,
+              "Hits": 0
+            },
+            {
+              "Line": 238,
+              "Offset": 306,
+              "EndOffset": 346,
+              "Path": 1,
+              "Ordinal": 3,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<System.Collections.Generic.List`1<PhoneDirectory.Business.Models.PersonModel>> PhoneDirectory.Business.Services.PersonService::GetAllPersons()": {
+          "Lines": {
+            "251": 0,
+            "252": 0,
+            "256": 0,
+            "258": 0,
+            "259": 0,
+            "260": 0,
+            "266": 0,
+            "268": 0,
+            "269": 0,
+            "270": 0,
+            "271": 0,
+            "272": 0,
+            "274": 0,
+            "277": 0,
+            "278": 0
+          },
+          "Branches": [
+            {
+              "Line": 268,
+              "Offset": 187,
+              "EndOffset": 189,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 268,
+              "Offset": 187,
+              "EndOffset": 227,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Responses.ServiceResponse`1<PhoneDirectory.Core.Requests.ReportRequest> PhoneDirectory.Business.Services.PersonService::GetReportByLocation(PhoneDirectory.Core.Requests.ReportRequest)": {
+          "Lines": {
+            "281": 0,
+            "282": 0,
+            "284": 0,
+            "287": 0,
+            "288": 0,
+            "289": 0,
+            "291": 0,
+            "292": 0,
+            "293": 0,
+            "295": 0,
+            "297": 0,
+            "298": 0,
+            "299": 0,
+            "300": 0,
+            "301": 0,
+            "303": 0,
+            "306": 0,
+            "307": 0,
+            "308": 0,
+            "310": 0,
+            "312": 0,
+            "313": 0
+          },
+          "Branches": [
+            {
+              "Line": 297,
+              "Offset": 541,
+              "EndOffset": 543,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 297,
+              "Offset": 541,
+              "EndOffset": 581,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PhoneDirectory.Business.Services.PersonService::.ctor(PhoneDirectory.DAL.Interfaces.IMongoRepository`1<PhoneDirectory.Entity.Models.Person>,Microsoft.AspNetCore.Http.IHttpContextAccessor)": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Services\\QueueService.cs": {
+      "PhoneDirectory.Business.Services.QueueService": {
+        "System.Void PhoneDirectory.Business.Services.QueueService::ReceiveQueue(System.String)": {
+          "Lines": {
+            "22": 0,
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0,
+            "31": 0,
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0,
+            "47": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Business.Services.QueueService::CreateQueue(System.String)": {
+          "Lines": {
+            "50": 0,
+            "51": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "61": 0,
+            "63": 0,
+            "65": 0,
+            "66": 0,
+            "67": 0,
+            "68": 0,
+            "69": 0,
+            "70": 0,
+            "71": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "80": 0,
+            "81": 0,
+            "82": 0,
+            "83": 0,
+            "84": 0,
+            "85": 0,
+            "86": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Business.Services.QueueService::SendToQueue(PhoneDirectory.Business.Models.QueueMessage,System.String)": {
+          "Lines": {
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "97": 0,
+            "98": 0,
+            "99": 0,
+            "100": 0,
+            "101": 0,
+            "102": 0,
+            "103": 0,
+            "105": 0,
+            "106": 0,
+            "108": 0,
+            "109": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "115": 0,
+            "116": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Business.Services.QueueService::.ctor(PhoneDirectory.Business.Services.IRequestService)": {
+          "Lines": {
+            "16": 0,
+            "17": 0,
+            "18": 0,
+            "19": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Services\\RequestService.cs": {
+      "PhoneDirectory.Business.Services.RequestService": {
+        "System.Net.Http.HttpResponseMessage PhoneDirectory.Business.Services.RequestService::SendPostRequest(System.String,System.String)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "18": 0,
+            "19": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "35": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 26,
+              "Offset": 90,
+              "EndOffset": 92,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 26,
+              "Offset": 90,
+              "EndOffset": 96,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Responses\\ServiceResponse.cs": {
+      "PhoneDirectory.Business.Responses.ServiceResponse": {
+        "System.Boolean PhoneDirectory.Business.Responses.ServiceResponse::get_Successed()": {
+          "Lines": {
+            "10": 24
+          },
+          "Branches": []
+        },
+        "System.Int16 PhoneDirectory.Business.Responses.ServiceResponse::get_Code()": {
+          "Lines": {
+            "12": 20
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Responses.ServiceResponse::get_Message()": {
+          "Lines": {
+            "14": 8
+          },
+          "Branches": []
+        },
+        "System.Object PhoneDirectory.Business.Responses.ServiceResponse::get_Errors()": {
+          "Lines": {
+            "16": 8
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.Boolean> PhoneDirectory.Business.Responses.ServiceResponse::get_SpecialBoolean()": {
+          "Lines": {
+            "18": 8
+          },
+          "Branches": []
+        }
+      },
+      "PhoneDirectory.Business.Responses.ServiceResponse`1": {
+        "T PhoneDirectory.Business.Responses.ServiceResponse`1::get_Result()": {
+          "Lines": {
+            "23": 9
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Business.Responses.ServiceResponse`1::get_TotalItems()": {
+          "Lines": {
+            "25": 20
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Models\\PersonModel.cs": {
+      "PhoneDirectory.Business.Models.PersonModel": {
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_Name()": {
+          "Lines": {
+            "12": 21
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_Surname()": {
+          "Lines": {
+            "13": 19
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_Company()": {
+          "Lines": {
+            "14": 17
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_PhoneNumber()": {
+          "Lines": {
+            "15": 14
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_Email()": {
+          "Lines": {
+            "16": 14
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.PersonModel::get_Location()": {
+          "Lines": {
+            "17": 12
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Models\\QueueMessage.cs": {
+      "PhoneDirectory.Business.Models.QueueMessage": {
+        "PhoneDirectory.Core.Requests.ReportRequest PhoneDirectory.Business.Models.QueueMessage::get_Message()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.QueueMessage::get_From()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.QueueMessage::get_To()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.QueueMessage::get_WebHookActionId()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.QueueMessage::get_ActionName()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Models\\ReportModel.cs": {
+      "PhoneDirectory.Business.Models.ReportModel": {
+        "System.DateTime PhoneDirectory.Business.Models.ReportModel::get_ReportRequestDate()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.ReportModel::get_Location()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Business.Models.ReportModel::get_NumberOfRegisteredPersons()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Business.Models.ReportModel::get_NumberOfRegisteredPhones()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.ReportStatus PhoneDirectory.Business.Models.ReportModel::get_ReportStatus()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Business.Models.ReportModel::get_Details()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Base\\BaseModel.cs": {
+      "PhoneDirectory.Business.Base.BaseModel": {
+        "System.String PhoneDirectory.Business.Base.BaseModel::get_UUID()": {
+          "Lines": {
+            "11": 12
+          },
+          "Branches": []
+        },
+        "System.DateTime PhoneDirectory.Business.Base.BaseModel::get_CreatedAt()": {
+          "Lines": {
+            "13": 25
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PhoneDirectory.Business.Base.BaseModel::get_UpdatedAt()": {
+          "Lines": {
+            "15": 12
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PhoneDirectory.Business.Base.BaseModel::get_DeletedAt()": {
+          "Lines": {
+            "17": 12
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\Base\\BaseService.cs": {
+      "PhoneDirectory.Business.Base.BaseService`1": {
+        "Microsoft.AspNetCore.Http.HttpContext PhoneDirectory.Business.Base.BaseService`1::get_HttpContext()": {
+          "Lines": {
+            "23": 0
+          },
+          "Branches": []
+        },
+        "Microsoft.Extensions.Logging.ILogger`1<T> PhoneDirectory.Business.Base.BaseService`1::get_Logger()": {
+          "Lines": {
+            "25": 0
+          },
+          "Branches": [
+            {
+              "Line": 25,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 25,
+              "Offset": 7,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Business.Interfaces.IAppSettings PhoneDirectory.Business.Base.BaseService`1::get_AppSettings()": {
+          "Lines": {
+            "27": 0
+          },
+          "Branches": [
+            {
+              "Line": 27,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 27,
+              "Offset": 7,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "AutoMapper.IMapper PhoneDirectory.Business.Base.BaseService`1::get_Mapper()": {
+          "Lines": {
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 9,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 28,
+              "Offset": 7,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Void PhoneDirectory.Business.Base.BaseService`1::.ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)": {
+          "Lines": {
+            "19": 0,
+            "20": 0,
+            "21": 0,
+            "22": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Business\\AutoMapper\\MappingProfile.cs": {
+      "PhoneDirectory.Business.AutoMapper.MappingProfile": {
+        "System.Void PhoneDirectory.Business.AutoMapper.MappingProfile::CreatePersonMappings()": {
+          "Lines": {
+            "18": 0,
+            "19": 0,
+            "20": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Business.AutoMapper.MappingProfile::.ctor()": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "PhoneDirectory.Core.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Core\\Responses\\RepositoryResponse.cs": {
+      "PhoneDirectory.Core.Responses.RepositoryResponse": {
+        "System.Boolean PhoneDirectory.Core.Responses.RepositoryResponse::get_Successed()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Core.Responses.RepositoryResponse::get_Message()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        }
+      },
+      "PhoneDirectory.Core.Responses.RepositoryResponse`1": {
+        "T PhoneDirectory.Core.Responses.RepositoryResponse`1::get_Result()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Core.Responses.RepositoryResponse`1::get_TotalDocuments()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Core\\Requests\\BaseQueryRequest.cs": {
+      "PhoneDirectory.Core.Requests.BaseQueryRequest": {
+        "System.String PhoneDirectory.Core.Requests.BaseQueryRequest::get_Id()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Core.Requests.BaseQueryRequest::get_PageSize()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Core.Requests.BaseQueryRequest::get_Page()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Core.Requests.BaseQueryRequest::get_Search()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PhoneDirectory.Core.Requests.BaseQueryRequest::get_DateFilter()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Core\\Requests\\ReportRequest.cs": {
+      "PhoneDirectory.Core.Requests.ReportRequest": {
+        "System.DateTime PhoneDirectory.Core.Requests.ReportRequest::get_ReportRequestDate()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Core.Requests.ReportRequest::get_Location()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Core.Requests.ReportRequest::get_NumberOfRegisteredPersons()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 PhoneDirectory.Core.Requests.ReportRequest::get_NumberOfRegisteredPhones()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.ReportStatus PhoneDirectory.Core.Requests.ReportRequest::get_ReportStatus()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "PhoneDirectory.DAL.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.DAL\\Repositories\\MongoRepository.cs": {
+      "PhoneDirectory.DAL.Repositories.MongoRepository`1": {
+        "System.String PhoneDirectory.DAL.Repositories.MongoRepository`1::GetCollectionName(System.Type)": {
+          "Lines": {
+            "23": 0,
+            "24": 0,
+            "25": 0,
+            "26": 0,
+            "27": 0,
+            "28": 0
+          },
+          "Branches": [
+            {
+              "Line": 24,
+              "Offset": 29,
+              "EndOffset": 31,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 24,
+              "Offset": 29,
+              "EndOffset": 35,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse PhoneDirectory.DAL.Repositories.MongoRepository`1::DeleteById(System.String)": {
+          "Lines": {
+            "31": 0,
+            "32": 0,
+            "35": 0,
+            "36": 0,
+            "37": 0,
+            "38": 0,
+            "39": 0,
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse`1<System.Collections.Generic.List`1<TDocument>> PhoneDirectory.DAL.Repositories.MongoRepository`1::FilterBy(System.Linq.Expressions.Expression`1<System.Func`2<TDocument,System.Boolean>>,System.Int32,System.Int32)": {
+          "Lines": {
+            "48": 0,
+            "49": 0,
+            "52": 0,
+            "53": 0,
+            "54": 0,
+            "55": 0,
+            "56": 0,
+            "57": 0,
+            "58": 0,
+            "59": 0,
+            "60": 0,
+            "61": 0,
+            "62": 0,
+            "64": 0,
+            "65": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse`1<TDocument> PhoneDirectory.DAL.Repositories.MongoRepository`1::FindOne(System.Linq.Expressions.Expression`1<System.Func`2<TDocument,System.Boolean>>)": {
+          "Lines": {
+            "68": 0,
+            "69": 0,
+            "72": 0,
+            "73": 0,
+            "74": 0,
+            "75": 0,
+            "76": 0,
+            "77": 0,
+            "78": 0,
+            "79": 0,
+            "81": 0,
+            "82": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse`1<TDocument> PhoneDirectory.DAL.Repositories.MongoRepository`1::FindById(System.String)": {
+          "Lines": {
+            "84": 0,
+            "85": 0,
+            "88": 0,
+            "89": 0,
+            "90": 0,
+            "91": 0,
+            "92": 0,
+            "93": 0,
+            "94": 0,
+            "95": 0,
+            "96": 0,
+            "98": 0,
+            "99": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse`1<TDocument> PhoneDirectory.DAL.Repositories.MongoRepository`1::InsertOne(TDocument)": {
+          "Lines": {
+            "102": 0,
+            "103": 0,
+            "106": 0,
+            "107": 0,
+            "108": 0,
+            "109": 0,
+            "110": 0,
+            "111": 0,
+            "112": 0,
+            "113": 0,
+            "114": 0,
+            "116": 0,
+            "117": 0
+          },
+          "Branches": []
+        },
+        "PhoneDirectory.Core.Responses.RepositoryResponse`1<TDocument> PhoneDirectory.DAL.Repositories.MongoRepository`1::ReplaceOne(TDocument)": {
+          "Lines": {
+            "119": 0,
+            "120": 0,
+            "122": 0,
+            "123": 0,
+            "124": 0,
+            "125": 0,
+            "126": 0,
+            "127": 0,
+            "128": 0,
+            "129": 0,
+            "130": 0,
+            "131": 0,
+            "132": 0,
+            "133": 0
+          },
+          "Branches": []
+        },
+        "MongoDB.Driver.IAggregateFluent`1<TDocument> PhoneDirectory.DAL.Repositories.MongoRepository`1::Aggregate(MongoDB.Driver.AggregateOptions)": {
+          "Lines": {
+            "136": 0,
+            "137": 0,
+            "138": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.DAL.Repositories.MongoRepository`1::.ctor(PhoneDirectory.DAL.Interfaces.IMongoDbSettings)": {
+          "Lines": {
+            "17": 0,
+            "18": 0,
+            "19": 0,
+            "20": 0,
+            "21": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.DAL\\MongoDbSettings\\MongoDbSettings.cs": {
+      "PhoneDirectory.DAL.MongoDbSettings.MongoDbSettings": {
+        "System.String PhoneDirectory.DAL.MongoDbSettings.MongoDbSettings::get_DatabaseName()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.DAL.MongoDbSettings.MongoDbSettings::get_ConnectionString()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "PhoneDirectory.Entity.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Entity\\Models\\Person.cs": {
+      "PhoneDirectory.Entity.Models.Person": {
+        "System.String PhoneDirectory.Entity.Models.Person::get_Name()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Entity.Models.Person::get_Surname()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Entity.Models.Person::get_Company()": {
+          "Lines": {
+            "15": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Entity.Models.Person::get_PhoneNumber()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Entity.Models.Person::get_Email()": {
+          "Lines": {
+            "17": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Entity.Models.Person::get_Location()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Entity\\Base\\BsonCollectionAttribute.cs": {
+      "PhoneDirectory.Entity.Base.BsonCollectionAttribute": {
+        "System.String PhoneDirectory.Entity.Base.BsonCollectionAttribute::get_CollectionName()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Entity.Base.BsonCollectionAttribute::.ctor(System.String)": {
+          "Lines": {
+            "12": 0,
+            "13": 0,
+            "14": 0,
+            "15": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Entity\\Base\\Document.cs": {
+      "PhoneDirectory.Entity.Base.Document": {
+        "System.String PhoneDirectory.Entity.Base.Document::get_UUID()": {
+          "Lines": {
+            "14": 0
+          },
+          "Branches": []
+        },
+        "System.DateTime PhoneDirectory.Entity.Base.Document::get_CreatedAt()": {
+          "Lines": {
+            "16": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PhoneDirectory.Entity.Base.Document::get_UpdatedAt()": {
+          "Lines": {
+            "18": 0
+          },
+          "Branches": []
+        },
+        "System.Nullable`1<System.DateTime> PhoneDirectory.Entity.Base.Document::get_DeletedAt()": {
+          "Lines": {
+            "20": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "PhoneDirectory.Resources.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Resources\\CustomMessage.Designer.cs": {
+      "PhoneDirectory.Resources.CustomMessage": {
+        "System.Resources.ResourceManager PhoneDirectory.Resources.CustomMessage::get_ResourceManager()": {
+          "Lines": {
+            "40": 33,
+            "41": 34,
+            "42": 1,
+            "43": 1,
+            "44": 1,
+            "45": 33,
+            "46": 33
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 1
+            },
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 33
+            }
+          ]
+        },
+        "System.Globalization.CultureInfo PhoneDirectory.Resources.CustomMessage::get_Culture()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Resources.CustomMessage::set_Culture(System.Globalization.CultureInfo)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.CustomMessage::get_ContactInformationNotFound()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.CustomMessage::get_InvalidID()": {
+          "Lines": {
+            "76": 0,
+            "77": 0,
+            "78": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.CustomMessage::get_PleaseFillInTheRequiredFields()": {
+          "Lines": {
+            "85": 0,
+            "86": 0,
+            "87": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.CustomMessage::get_ThisFieldIsRequired()": {
+          "Lines": {
+            "94": 33,
+            "95": 33,
+            "96": 33
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.CustomMessage::get_UserNotFound()": {
+          "Lines": {
+            "103": 0,
+            "104": 0,
+            "105": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Resources.CustomMessage::.ctor()": {
+          "Lines": {
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\PhoneDirectory.Resources\\SystemMessage.Designer.cs": {
+      "PhoneDirectory.Resources.SystemMessage": {
+        "System.Resources.ResourceManager PhoneDirectory.Resources.SystemMessage::get_ResourceManager()": {
+          "Lines": {
+            "40": 0,
+            "41": 0,
+            "42": 0,
+            "43": 0,
+            "44": 0,
+            "45": 0,
+            "46": 0
+          },
+          "Branches": [
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 13,
+              "Path": 0,
+              "Ordinal": 0,
+              "Hits": 0
+            },
+            {
+              "Line": 41,
+              "Offset": 11,
+              "EndOffset": 47,
+              "Path": 1,
+              "Ordinal": 1,
+              "Hits": 0
+            }
+          ]
+        },
+        "System.Globalization.CultureInfo PhoneDirectory.Resources.SystemMessage::get_Culture()": {
+          "Lines": {
+            "55": 0,
+            "56": 0,
+            "57": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Resources.SystemMessage::set_Culture(System.Globalization.CultureInfo)": {
+          "Lines": {
+            "58": 0,
+            "59": 0,
+            "60": 0
+          },
+          "Branches": []
+        },
+        "System.String PhoneDirectory.Resources.SystemMessage::get_Feedback_UnexpectedError()": {
+          "Lines": {
+            "67": 0,
+            "68": 0,
+            "69": 0
+          },
+          "Branches": []
+        },
+        "System.Void PhoneDirectory.Resources.SystemMessage::.ctor()": {
+          "Lines": {
+            "32": 0,
+            "33": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  },
+  "Shared.Models.dll": {
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\Shared.Models\\Interfaces\\IRabbitMQInformation.cs": {
+      "Shared.Models.IRabbitMQInformation": {
+        "System.String Shared.Models.IRabbitMQInformation::get_RootUri()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.IRabbitMQInformation::get_UserName()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.IRabbitMQInformation::get_Password()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\Shared.Models\\Models\\RabbitMQInformation.cs": {
+      "Shared.Models.RabbitMQInformation": {
+        "System.String Shared.Models.RabbitMQInformation::get_Uri()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.RabbitMQInformation::get_UserName()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.RabbitMQInformation::get_Password()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.RabbitMQInformation::get_RootUri()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\Shared.Models\\Models\\SharedReport.cs": {
+      "Shared.Models.SharedReport": {
+        "System.DateTime Shared.Models.SharedReport::get_ReportRequestDate()": {
+          "Lines": {
+            "9": 0
+          },
+          "Branches": []
+        },
+        "System.String Shared.Models.SharedReport::get_Location()": {
+          "Lines": {
+            "10": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Shared.Models.SharedReport::get_NumberOfRegisteredPersons()": {
+          "Lines": {
+            "11": 0
+          },
+          "Branches": []
+        },
+        "System.Int32 Shared.Models.SharedReport::get_NumberOfRegisteredPhones()": {
+          "Lines": {
+            "12": 0
+          },
+          "Branches": []
+        },
+        "Shared.Models.ReportStatus Shared.Models.SharedReport::get_ReportStatus()": {
+          "Lines": {
+            "13": 0
+          },
+          "Branches": []
+        }
+      }
+    },
+    "C:\\Users\\Tek100\\Desktop\\STech_Assessment\\STech_Assessment\\Shared.Models\\MQ\\RabbitMQService.cs": {
+      "Shared.Models.MQ.RabbitMQService": {
+        "System.Void Shared.Models.MQ.RabbitMQService::SendMessagesSync(Shared.Models.SharedReport)": {
+          "Lines": {
+            "33": 0,
+            "34": 0,
+            "35": 0,
+            "37": 0
+          },
+          "Branches": []
+        },
+        "System.Void Shared.Models.MQ.RabbitMQService::.ctor(MassTransit.IBus)": {
+          "Lines": {
+            "13": 0,
+            "15": 0,
+            "16": 0,
+            "17": 0,
+            "18": 0
+          },
+          "Branches": []
+        }
+      },
+      "Shared.Models.MQ.RabbitMQService/<SendMessages>d__3": {
+        "System.Void Shared.Models.MQ.RabbitMQService/<SendMessages>d__3::MoveNext()": {
+          "Lines": {
+            "26": 0,
+            "27": 0,
+            "28": 0,
+            "29": 0,
+            "30": 0
+          },
+          "Branches": []
+        }
+      }
+    }
+  }
+}

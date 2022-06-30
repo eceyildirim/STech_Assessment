@@ -15,8 +15,5 @@ namespace PhoneDirectory.Business.Models
         public string PhoneNumber { get; set; }
         public string Email { get; set; }
         public string Location { get; set; }
-        //public List<string> ContactInformationIds { get; set; } = new List<string> { };
-
-        //public ICollection<ContactInformationModel> ContactInformations { get; set; } = new List<ContactInformationModel> { };
     }
 }
